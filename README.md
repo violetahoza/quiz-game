@@ -6,6 +6,4 @@ This quiz game is an interactive application designed to test the user's logical
 
 - **Interactive Interface**: A user-friendly interface that allows players to easily navigate through questions and submit answers.
   
-- **Propositional Logic Problems**: A variety of problems that require the application of propositional logic, including truth tables, logical equivalences, and inference rules.
-
-- **Instant Feedback**: Players receive immediate feedback on their answers, helping them learn and understand the logic behind each problem.
+- **Propositional Logic Problems**: A variety of problems that require the application of propositional logic, including logical equivalences, and inference rules.
