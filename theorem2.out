@@ -1,0 +1,185 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 8912 was started by violeta on LAPTOP-J1T1GSAL,
+Sat Nov 30 23:13:51 2024
+The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all X ((all Y (animal(Y) -> loves(X,Y))) -> (exists Z loves(Z,X)))).
+(all X all Y (kills(X,Y) & animal(Y) -> (all Z -loves(Z,X)))).
+(all Y (animal(Y) -> loves(jack,Y))).
+kills(jack,tuna) | kills(curiosity,tuna).
+(all X (cat(X) -> animal(X))).
+-(kills(jack,tuna) & kills(curiosity,tuna)).
+cat(tuna).
+end_of_list.
+
+formulas(goals).
+kills(jack,tuna).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all X ((all Y (animal(Y) -> loves(X,Y))) -> (exists Z loves(Z,X)))) # label(non_clause).  [assumption].
+2 (all X all Y (kills(X,Y) & animal(Y) -> (all Z -loves(Z,X)))) # label(non_clause).  [assumption].
+3 (all Y (animal(Y) -> loves(jack,Y))) # label(non_clause).  [assumption].
+4 (all X (cat(X) -> animal(X))) # label(non_clause).  [assumption].
+5 -(kills(jack,tuna) & kills(curiosity,tuna)) # label(non_clause).  [assumption].
+6 kills(jack,tuna) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+animal(f1(x)) | loves(f2(x),x).  [clausify(1)].
+-loves(x,f1(x)) | loves(f2(x),x).  [clausify(1)].
+-kills(x,y) | -animal(y) | -loves(z,x).  [clausify(2)].
+-animal(x) | loves(jack,x).  [clausify(3)].
+kills(jack,tuna) | kills(curiosity,tuna).  [assumption].
+-cat(x) | animal(x).  [clausify(4)].
+-kills(jack,tuna) | -kills(curiosity,tuna).  [clausify(5)].
+cat(tuna).  [assumption].
+-kills(jack,tuna).  [deny(6)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating animal/1
+7 -kills(x,y) | -animal(y) | -loves(z,x).  [clausify(2)].
+8 animal(f1(x)) | loves(f2(x),x).  [clausify(1)].
+Derived: -kills(x,f1(y)) | -loves(z,x) | loves(f2(y),y).  [resolve(7,b,8,a)].
+9 -animal(x) | loves(jack,x).  [clausify(3)].
+Derived: loves(jack,f1(x)) | loves(f2(x),x).  [resolve(9,a,8,a)].
+10 -cat(x) | animal(x).  [clausify(4)].
+Derived: -cat(x) | -kills(y,x) | -loves(z,y).  [resolve(10,b,7,b)].
+Derived: -cat(x) | loves(jack,x).  [resolve(10,b,9,a)].
+
+Eliminating cat/1
+11 -cat(x) | -kills(y,x) | -loves(z,y).  [resolve(10,b,7,b)].
+12 cat(tuna).  [assumption].
+Derived: -kills(x,tuna) | -loves(y,x).  [resolve(11,a,12,a)].
+13 -cat(x) | loves(jack,x).  [resolve(10,b,9,a)].
+Derived: loves(jack,tuna).  [resolve(13,a,12,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ loves, kills ]).
+Function symbol precedence:  function_order([ jack, tuna, curiosity, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      14 -loves(x,f1(x)) | loves(f2(x),x).  [clausify(1)].
+kept:      15 kills(jack,tuna) | kills(curiosity,tuna).  [assumption].
+kept:      16 -kills(jack,tuna) | -kills(curiosity,tuna).  [clausify(5)].
+kept:      17 -kills(jack,tuna).  [deny(6)].
+kept:      18 -kills(x,f1(y)) | -loves(z,x) | loves(f2(y),y).  [resolve(7,b,8,a)].
+kept:      19 loves(jack,f1(x)) | loves(f2(x),x).  [resolve(9,a,8,a)].
+kept:      20 -kills(x,tuna) | -loves(y,x).  [resolve(11,a,12,a)].
+kept:      21 loves(jack,tuna).  [resolve(13,a,12,a)].
+kept:      22 kills(curiosity,tuna).  [back_unit_del(15),unit_del(a,17)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+14 -loves(x,f1(x)) | loves(f2(x),x).  [clausify(1)].
+17 -kills(jack,tuna).  [deny(6)].
+18 -kills(x,f1(y)) | -loves(z,x) | loves(f2(y),y).  [resolve(7,b,8,a)].
+19 loves(jack,f1(x)) | loves(f2(x),x).  [resolve(9,a,8,a)].
+20 -kills(x,tuna) | -loves(y,x).  [resolve(11,a,12,a)].
+21 loves(jack,tuna).  [resolve(13,a,12,a)].
+22 kills(curiosity,tuna).  [back_unit_del(15),unit_del(a,17)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=8): 14 -loves(x,f1(x)) | loves(f2(x),x).  [clausify(1)].
+
+given #2 (I,wt=3): 17 -kills(jack,tuna).  [deny(6)].
+
+given #3 (I,wt=11): 18 -kills(x,f1(y)) | -loves(z,x) | loves(f2(y),y).  [resolve(7,b,8,a)].
+
+given #4 (I,wt=8): 19 loves(jack,f1(x)) | loves(f2(x),x).  [resolve(9,a,8,a)].
+
+given #5 (I,wt=6): 20 -kills(x,tuna) | -loves(y,x).  [resolve(11,a,12,a)].
+
+given #6 (I,wt=3): 21 loves(jack,tuna).  [resolve(13,a,12,a)].
+
+given #7 (I,wt=3): 22 kills(curiosity,tuna).  [back_unit_del(15),unit_del(a,17)].
+
+given #8 (A,wt=3): 23 -kills(tuna,tuna).  [ur(20,b,21,a)].
+
+given #9 (F,wt=3): 24 -loves(x,curiosity).  [resolve(22,a,20,a)].
+
+given #10 (F,wt=4): 26 -kills(tuna,f1(curiosity)).  [ur(18,b,21,a,c,24,a)].
+
+given #11 (F,wt=4): 27 -loves(curiosity,f1(curiosity)).  [ur(14,b,24,a)].
+
+given #12 (T,wt=4): 25 loves(jack,f1(curiosity)).  [resolve(24,a,19,b)].
+
+given #13 (A,wt=4): 28 -kills(f1(curiosity),tuna).  [ur(20,b,25,a)].
+
+given #14 (F,wt=5): 29 -kills(f1(curiosity),f1(curiosity)).  [ur(18,b,25,a,c,24,a)].
+
+============================== STATISTICS ============================
+
+Given=14. Generated=17. Kept=16. proofs=0.
+Usable=14. Sos=0. Demods=0. Limbo=0, Disabled=17. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=1. Nonunit_bsub_feature_tests=8.
+Megabytes=0.06.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 8912 exit (sos_empty) Sat Nov 30 23:13:51 2024
