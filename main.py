@@ -179,7 +179,7 @@ def revealAnswer(answer):
     label1.pack(pady=(0, 20))  # Add padding below
 
     # Display whether the answer is correct or wrong
-    resultLabel = tk.Label(revealFrame, text="CORRECT" if answer else "WRONG", font=('Helvetica bold', 20), fg="green" if answer else "#6b0101", bg="#c3b5df")
+    resultLabel = tk.Label(revealFrame, text="CORRECT" if answer else "WRONG", font=('Helvetica bold', 20), fg="green" if answer else "#b80f0a", bg="#c3b5df")
     resultLabel.pack(pady=(0, 20))  # Add padding below
 
     # Create a back button for navigation

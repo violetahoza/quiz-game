@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 9955 was started by violeta on LAPTOP-J1T1GSAL,
-Sun Dec  1 00:19:09 2024
+Process 10056 was started by violeta on LAPTOP-J1T1GSAL,
+Sun Dec  1 00:24:28 2024
 The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
 ============================== end of head ===========================
 
@@ -158,7 +158,7 @@ end_of_list.
 
 ============================== SEARCH ================================
 
-% Starting search at 0.01 seconds.
+% Starting search at 0.00 seconds.
 
 given #1 (I,wt=2): 20 -l1 | -l3.  [clausify(2)].
 
@@ -210,7 +210,7 @@ Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
 Nonunit_fsub_feature_tests=7. Nonunit_bsub_feature_tests=30.
 Megabytes=0.06.
-User_CPU=0.01, System_CPU=0.00, Wall_clock=1.
+User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
 
 ============================== end of statistics =====================
 
@@ -220,4 +220,4 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 9955 exit (sos_empty) Sun Dec  1 00:19:10 2024
+Process 10056 exit (sos_empty) Sun Dec  1 00:24:28 2024
