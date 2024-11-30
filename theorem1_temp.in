@@ -25,5 +25,5 @@ l3 -> t1.
 
 end_of_list.
 formulas(goals).
-    l1.
+    l2.
 end_of_list.

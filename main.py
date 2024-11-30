@@ -5,32 +5,56 @@ import prover
 
 gui = tk.Tk()
 gui.geometry("800x500")
-gui.configure(bg="#d4c7cd")
+gui.configure(bg="#c3b5df")
 
 def startPage():
     for widget in gui.winfo_children():
         widget.destroy()
 
-    # Center the title
-    title = tk.Label(text="Quiz Game", font=('Helvetica bold', 48), fg="#40031e", bg="#d4c7cd")
-    title.pack(pady=(150, 10))  # Padding above is 200, below is 10
+    image_path = "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/quiz-game/quiz.jpg"  # Ensure this is correct
 
-    # Center the button
-    startGameButton = tk.Button(text="Start", command=lambda: chooseQuestion(), fg="white", bg="#40031e", width=20, height=2)
-    startGameButton.pack(pady=(10, 50))  # Padding above is 10, below is 50
+    try:
+        background_image = Image.open(image_path)  # Try loading the image
+        background_image = background_image.resize((800, 500), Image.Resampling.LANCZOS)  # Resize the image to fit the window
+        bg_image = ImageTk.PhotoImage(background_image)  # Convert the image for Tkinter
+    except Exception as e:
+        print("Error loading image:", e)
+        background_image = None  # Set it to None if there is an issue with loading the image
+
+    if background_image:
+        # Create a label to hold the background image
+        background_label = tk.Label(gui, image=bg_image)
+        background_label.place(relwidth=1, relheight=1)  # Set the background label to cover the entire window
+    else:
+        # Set a default background color if the image cannot be loaded
+        gui.configure(bg="#d4c7cd")
+
+    # Create a frame to hold the title and button with a common background
+    frame = tk.Frame(gui, bg="#ad8cef", padx=20, pady=20)  # Add padding for spacing around the content
+    frame.pack(pady=(150, 50))  # Only add vertical padding, no fill or expand
+
+    # Title label inside the frame
+    title = tk.Label(frame, text="Quiz Game", font=('Helvetica bold', 48), fg="white", bg="#ad8cef", bd=0)
+    title.pack(pady=10)  # Padding for spacing around the title
+
+    # Start button inside the frame
+    startGameButton = tk.Button(frame, text="Start", command=lambda: chooseQuestion(), fg="white", bg="#ad8cef", width=20, height=2)
+    startGameButton.pack(pady=20)  # Padding for spacing around the button
 
     gui.mainloop()
+
+
 
 def chooseQuestion():
     for widget in gui.winfo_children():
         widget.destroy()
 
     # Create a frame for question selection
-    frame = tk.Frame(gui, bg="#d4c7cd")
+    frame = tk.Frame(gui, bg="#c3b5df")
     frame.pack(pady=20)
 
     # Add a title for the question selection
-    title = tk.Label(frame, text="Choose a Question", font=('Helvetica bold', 24), fg="#40031e", bg="#d4c7cd")
+    title = tk.Label(frame, text="Choose a Question", font=('Helvetica bold', 24), fg="#6f2bae", bg="#c3b5df")
     title.grid(row=0, column=0, columnspan=2, pady=(10, 20))  # Center title across two columns
 
     # Create buttons based on descriptions and attach commands
@@ -42,11 +66,11 @@ def chooseQuestion():
 
     # Arrange buttons in a vertical list
     for idx, (description, command) in enumerate(questions):
-        questionBtn = tk.Button(frame, text=description, fg="white", bg="#40031e", width=25, height=2, command=command)
+        questionBtn = tk.Button(frame, text=description, fg="white", bg="#8b5ebf", width=25, height=2, command=command)
         questionBtn.grid(row=1 + idx, column=0, padx=20, pady=(10, 5))  # Place buttons below the title
 
     # Back button at the end, same dimensions as question buttons
-    backButton = tk.Button(frame, text="Back", command=startPage, fg="white", bg="#40031e", width=25, height=2)
+    backButton = tk.Button(frame, text="Back", command=startPage, fg="white", bg="#8b5ebf", width=25, height=2)
     backButton.grid(row=len(questions) + 1, column=0, padx=20, pady=(10, 10))  # Place back button below all question buttons
 
     gui.mainloop()
@@ -56,11 +80,11 @@ def questionPage1():
         widget.destroy()
 
     # Title for the question
-    title = tk.Label(gui, text="Question 1: Princesses and Tigers", font=('Helvetica bold', 24), fg="#40031e", bg="#d4c7cd")
+    title = tk.Label(gui, text="Question 1: Princesses and Tigers", font=('Helvetica bold', 24), fg="#6f2bae", bg="#c3b5df")
     title.pack(pady=20)
 
     # Create a frame for the question description
-    descriptionFrame = tk.Frame(gui, bg="#d4c7cd")
+    descriptionFrame = tk.Frame(gui, bg="#e7dfee")
     descriptionFrame.pack(pady=(10, 20), padx=10)
 
     # Create a Text widget for the question description
@@ -81,18 +105,18 @@ def questionPage1():
     questionDescription.pack()
 
     # Create a frame for the room buttons
-    buttonFrame = tk.Frame(gui, bg="#d4c7cd")
+    buttonFrame = tk.Frame(gui, bg="#c3b5df")
     buttonFrame.pack(pady=(10, 20))  # Add some padding above and below the button frame
 
     # Room buttons in the same row
-    room1Btn = tk.Button(buttonFrame, text="Room 1", fg="white", bg="#40031e", width=10, height=2, command=lambda: [revealAnswer(prover.puzzle(1, 1))])
+    room1Btn = tk.Button(buttonFrame, text="Room 1", fg="white", bg="#8b5ebf", width=10, height=2, command=lambda: [revealAnswer(prover.puzzle(1, 1))])
     room1Btn.grid(row=0, column=0, padx=10)  # Button for Room 1
-    room2Btn = tk.Button(buttonFrame, text="Room 2", fg="white", bg="#40031e", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(1, 2))])
+    room2Btn = tk.Button(buttonFrame, text="Room 2", fg="white", bg="#8b5ebf", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(1, 2))])
     room2Btn.grid(row=0, column=1, padx=10)  # Button for Room 2
-    room3Btn = tk.Button(buttonFrame, text="Room 3", fg="white", bg="#40031e", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(1, 3))])
+    room3Btn = tk.Button(buttonFrame, text="Room 3", fg="white", bg="#8b5ebf", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(1, 3))])
     room3Btn.grid(row=0, column=2, padx=10)  # Button for Room 3
 
-    backButton = tk.Button(gui, text="Back", command=chooseQuestion, fg="white", bg="#40031e", width=10, height=2)  
+    backButton = tk.Button(gui, text="Back", command=chooseQuestion, fg="white", bg="#8b5ebf", width=10, height=2)  
     backButton.pack(pady=20)  
 
     gui.mainloop()
@@ -102,11 +126,11 @@ def questionPage2():
         widget.destroy()
 
     # Title for the question
-    title = tk.Label(gui, text="Question 2: Curiosity killed the cat", font=('Helvetica bold', 24), fg="#40031e", bg="#d4c7cd")
+    title = tk.Label(gui, text="Question 2: Curiosity killed the cat", font=('Helvetica bold', 24), fg="#6f2bae", bg="#c3b5df")
     title.pack(pady=20)
 
     # Create a frame for the question description
-    descriptionFrame = tk.Frame(gui, bg="#d4c7cd")
+    descriptionFrame = tk.Frame(gui, bg="#e7dfee")
     descriptionFrame.pack(pady=(10, 20), padx=10)
 
     # Create a Text widget for the question description
@@ -124,14 +148,14 @@ def questionPage2():
     questionDescription.pack()
 
     # Create a frame for the room buttons
-    buttonFrame = tk.Frame(gui, bg="#d4c7cd")
+    buttonFrame = tk.Frame(gui, bg="#c3b5df")
     buttonFrame.pack(pady=(10, 20))  # Add some padding above and below the button frame
 
-    btn1 = tk.Button(buttonFrame, text="Jack", fg="white", bg="#40031e", width=10, height=2, command=lambda: [revealAnswer(prover.puzzle(2, 1))])
+    btn1 = tk.Button(buttonFrame, text="Jack", fg="white", bg="#8b5ebf", width=10, height=2, command=lambda: [revealAnswer(prover.puzzle(2, 1))])
     btn1.grid(row=0, column=0, padx=10)
-    btn2 = tk.Button(buttonFrame, text="Curiosity", fg="white", bg="#40031e", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(2, 2))])
+    btn2 = tk.Button(buttonFrame, text="Curiosity", fg="white", bg="#8b5ebf", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(2, 2))])
     btn2.grid(row=0, column=1, padx=10)  
-    backButton = tk.Button(gui, text="Back", command=chooseQuestion, fg="white", bg="#40031e", width=10, height=2)  
+    backButton = tk.Button(gui, text="Back", command=chooseQuestion, fg="white", bg="#8b5ebf", width=10, height=2)  
     backButton.pack(pady=20)  
 
     gui.mainloop()
@@ -147,19 +171,19 @@ def revealAnswer(answer):
         widget.destroy()
 
     # Create a frame for the reveal answer page
-    revealFrame = tk.Frame(gui, bg="#d4c7cd")
+    revealFrame = tk.Frame(gui, bg="#c3b5df")
     revealFrame.pack(pady=50)  # Center the frame with padding
 
     # Title for the answer reveal
-    label1 = tk.Label(revealFrame, text="Your answer is:", font=('Helvetica bold', 20), fg="#40031e", bg="#d4c7cd")
+    label1 = tk.Label(revealFrame, text="Your answer is:", font=('Helvetica bold', 20), fg="#6f2bae", bg="#c3b5df")
     label1.pack(pady=(0, 20))  # Add padding below
 
     # Display whether the answer is correct or wrong
-    resultLabel = tk.Label(revealFrame, text="CORRECT" if answer else "WRONG", font=('Helvetica bold', 20), fg="#40031e", bg="#d4c7cd")
+    resultLabel = tk.Label(revealFrame, text="CORRECT" if answer else "WRONG", font=('Helvetica bold', 20), fg="green" if answer else "#6b0101", bg="#c3b5df")
     resultLabel.pack(pady=(0, 20))  # Add padding below
 
     # Create a back button for navigation
-    backButton = tk.Button(revealFrame, text="Back", command=chooseQuestion, fg="white", bg="#40031e", width=15, height=2)
+    backButton = tk.Button(revealFrame, text="Back", command=chooseQuestion, fg="white", bg="#6f2bae", width=15, height=2)
     backButton.pack(pady=20)  # Add padding below the button
 
     gui.mainloop()
