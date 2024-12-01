@@ -1,0 +1,261 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 883 was started by violeta on LAPTOP-J1T1GSAL,
+Sun Dec  1 23:16:11 2024
+The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/mace4 -f theorem3_temp.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file theorem3_temp.in
+
+set(arithmetic).
+    % set(arithmetic) -> clear(lnh).
+    % set(arithmetic) -> assign(selection_order, 0).
+
+    % Declaring Mace4 arithmetic parse types.
+assign(domain_size,5).
+    % assign(domain_size, 5) -> assign(start_size, 5).
+    % assign(domain_size, 5) -> assign(end_size, 5).
+assign(max_models,-1).
+
+list(distinct).
+[Blue,Green,Red,White,Yellow].
+[Brit,Dane,German,Norwegian,Swede].
+[Beer,Coffee,Milk,Tea,Water].
+[Blends,BlueMaster,Dunhill,PallMall,Prince].
+[Birds,Cats,Dogs,Horses,Fish].
+end_of_list.
+
+formulas(utils).
+right_neighbour(x,y) <-> x + 1 = y.
+left_neighbour(x,y) <-> x = y + 1.
+neighbour(x,y) <-> right_neighbour(x,y) | left_neighbour(x,y).
+middle(x) <-> x = 2.
+first(x) <-> x = 0.
+end_of_list.
+
+formulas(assumptions).
+Brit = Red.
+Swede = Dogs.
+Dane = Tea.
+left_neighbour(Green,White).
+Green = Coffee.
+PallMall = Birds.
+Yellow = Dunhill.
+middle(Milk).
+first(Norwegian).
+neighbour(Blends,Cats).
+neighbour(Horses,Dunhill).
+BlueMaster = Beer.
+German = Prince.
+neighbour(Norwegian,Blue).
+neighbour(Blends,Water).
+neighbour(Norwegian,x) <-> x = Blue.
+neighbour(Green,White).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 right_neighbour(x,y) <-> x + 1 = y # label(non_clause).  [assumption].
+2 left_neighbour(x,y) <-> x = y + 1 # label(non_clause).  [assumption].
+3 neighbour(x,y) <-> right_neighbour(x,y) | left_neighbour(x,y) # label(non_clause).  [assumption].
+4 middle(x) <-> x = 2 # label(non_clause).  [assumption].
+5 first(x) <-> x = 0 # label(non_clause).  [assumption].
+6 neighbour(Norwegian,x) <-> x = Blue # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-right_neighbour(x,y) | x + 1 = y.
+right_neighbour(x,y) | x + 1 != y.
+-left_neighbour(x,y) | y + 1 = x.
+left_neighbour(x,y) | y + 1 != x.
+-neighbour(x,y) | right_neighbour(x,y) | left_neighbour(x,y).
+neighbour(x,y) | -right_neighbour(x,y).
+neighbour(x,y) | -left_neighbour(x,y).
+-middle(x) | 2 = x.
+middle(x) | 2 != x.
+-first(x) | 0 = x.
+first(x) | 0 != x.
+Brit = Red.
+Swede = Dogs.
+Dane = Tea.
+left_neighbour(Green,White).
+Green = Coffee.
+PallMall = Birds.
+Yellow = Dunhill.
+middle(Milk).
+first(Norwegian).
+neighbour(Blends,Cats).
+neighbour(Horses,Dunhill).
+BlueMaster = Beer.
+German = Prince.
+neighbour(Norwegian,Blue).
+neighbour(Blends,Water).
+-neighbour(Norwegian,x) | x = Blue.
+neighbour(Norwegian,x) | x != Blue.
+neighbour(Green,White).
+Blue != Green.
+Blue != Red.
+Blue != White.
+Blue != Yellow.
+Green != Red.
+Green != White.
+Green != Yellow.
+Red != White.
+Red != Yellow.
+White != Yellow.
+Brit != Dane.
+Brit != German.
+Brit != Norwegian.
+Brit != Swede.
+Dane != German.
+Dane != Norwegian.
+Dane != Swede.
+German != Norwegian.
+German != Swede.
+Norwegian != Swede.
+Beer != Coffee.
+Beer != Milk.
+Beer != Tea.
+Beer != Water.
+Coffee != Milk.
+Coffee != Tea.
+Coffee != Water.
+Milk != Tea.
+Milk != Water.
+Tea != Water.
+Blends != BlueMaster.
+Blends != Dunhill.
+Blends != PallMall.
+Blends != Prince.
+BlueMaster != Dunhill.
+BlueMaster != PallMall.
+BlueMaster != Prince.
+Dunhill != PallMall.
+Dunhill != Prince.
+PallMall != Prince.
+Birds != Cats.
+Birds != Dogs.
+Birds != Horses.
+Birds != Fish.
+Cats != Dogs.
+Cats != Horses.
+Cats != Fish.
+Dogs != Horses.
+Dogs != Fish.
+Horses != Fish.
+end_of_list.
+
+============================== end of clauses for search =============
+
+% The largest natural number in the input is 2.
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== MODEL =================================
+
+interpretation( 5, [number=1, seconds=0], [
+
+        function(Beer, [ 3 ]),
+
+        function(Birds, [ 2 ]),
+
+        function(Blends, [ 1 ]),
+
+        function(Blue, [ 1 ]),
+
+        function(BlueMaster, [ 3 ]),
+
+        function(Brit, [ 2 ]),
+
+        function(Cats, [ 0 ]),
+
+        function(Coffee, [ 4 ]),
+
+        function(Dane, [ 1 ]),
+
+        function(Dogs, [ 3 ]),
+
+        function(Dunhill, [ 0 ]),
+
+        function(German, [ 4 ]),
+
+        function(Green, [ 4 ]),
+
+        function(Horses, [ 1 ]),
+
+        function(Milk, [ 2 ]),
+
+        function(Norwegian, [ 0 ]),
+
+        function(PallMall, [ 2 ]),
+
+        function(Prince, [ 4 ]),
+
+        function(Red, [ 2 ]),
+
+        function(Swede, [ 3 ]),
+
+        function(Tea, [ 1 ]),
+
+        function(Water, [ 0 ]),
+
+        function(White, [ 3 ]),
+
+        function(Yellow, [ 0 ]),
+
+        relation(first(_), [ 1, 0, 0, 0, 0 ]),
+
+        relation(middle(_), [ 0, 0, 1, 0, 0 ]),
+
+        relation(left_neighbour(_,_), [
+			   0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0,
+			   0, 0, 1, 0, 0,
+			   0, 0, 0, 1, 0 ]),
+
+        relation(neighbour(_,_), [
+			   0, 1, 0, 0, 0,
+			   1, 0, 1, 0, 0,
+			   0, 1, 0, 1, 0,
+			   0, 0, 1, 0, 1,
+			   0, 0, 0, 1, 0 ]),
+
+        relation(right_neighbour(_,_), [
+			   0, 1, 0, 0, 0,
+			   0, 0, 1, 0, 0,
+			   0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0 ]),
+
+        function(Fish, [ 4 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=271, kept=151.
+Selections=21, assignments=105, propagations=199, current_models=1.
+Rewrite_terms=866, rewrite_bools=554, indexes=0.
+Rules_from_neg_clauses=54, cross_offs=282.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 883 exit (all_models) Sun Dec  1 23:16:11 2024
+The process finished Sun Dec  1 23:16:11 2024

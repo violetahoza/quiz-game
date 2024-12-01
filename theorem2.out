@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 9935 was started by violeta on LAPTOP-J1T1GSAL,
-Sun Dec  1 00:18:51 2024
+Process 759 was started by violeta on LAPTOP-J1T1GSAL,
+Sun Dec  1 23:11:18 2024
 The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
 ============================== end of head ===========================
 
@@ -182,4 +182,4 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 9935 exit (sos_empty) Sun Dec  1 00:18:51 2024
+Process 759 exit (sos_empty) Sun Dec  1 23:11:18 2024

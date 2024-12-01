@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 10056 was started by violeta on LAPTOP-J1T1GSAL,
-Sun Dec  1 00:24:28 2024
+Process 4742 was started by violeta on LAPTOP-J1T1GSAL,
+Sun Dec  1 22:48:01 2024
 The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
 ============================== end of head ===========================
 
@@ -28,7 +28,7 @@ t1 & t3 -> -t2 | -t1.
 end_of_list.
 
 formulas(goals).
-l2.
+l1.
 end_of_list.
 
 ============================== end of input ==========================
@@ -52,7 +52,7 @@ end_of_list.
 14 t1 & t2 -> -t2 | -t2 # label(non_clause).  [assumption].
 15 t2 & t3 -> -t2 | -t1 # label(non_clause).  [assumption].
 16 t1 & t3 -> -t2 | -t1 # label(non_clause).  [assumption].
-17 l2 # label(non_clause) # label(goal).  [goal].
+17 l1 # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -83,7 +83,7 @@ t2 | t3.  [clausify(7)].
 -t1 | -t2.  [clausify(14)].
 -t2 | -t3 | -t1.  [clausify(15)].
 -t1 | -t3 | -t2.  [clausify(16)].
--l2.  [deny(17)].
+-l1.  [deny(17)].
 end_of_list.
 
 formulas(demodulators).
@@ -125,8 +125,8 @@ kept:      28 -l1 | t2.  [clausify(11)].
 kept:      29 -l2 | t2.  [clausify(12)].
 kept:      30 -l3 | t1.  [clausify(13)].
 kept:      31 -t1 | -t2.  [clausify(14)].
-kept:      32 -l2.  [deny(17)].
-kept:      33 l1 | l3.  [back_unit_del(18),unit_del(b,32)].
+kept:      32 -l1.  [deny(17)].
+kept:      33 l2 | l3.  [back_unit_del(18),unit_del(a,32)].
 
 ============================== end of process initial clauses ========
 
@@ -138,17 +138,17 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-20 -l1 | -l3.  [clausify(2)].
+21 -l2 | -l3.  [clausify(4)].
 22 t1 | t3.  [clausify(7)].
 23 t2 | t1.  [clausify(7)].
 24 t2 | t3.  [clausify(7)].
-25 -l1 | -t1.  [clausify(8)].
+26 -l2 | -t2.  [clausify(9)].
 27 -l3 | -t3.  [clausify(10)].
-28 -l1 | t2.  [clausify(11)].
+29 -l2 | t2.  [clausify(12)].
 30 -l3 | t1.  [clausify(13)].
 31 -t1 | -t2.  [clausify(14)].
-32 -l2.  [deny(17)].
-33 l1 | l3.  [back_unit_del(18),unit_del(b,32)].
+32 -l1.  [deny(17)].
+33 l2 | l3.  [back_unit_del(18),unit_del(a,32)].
 end_of_list.
 
 formulas(demodulators).
@@ -158,9 +158,9 @@ end_of_list.
 
 ============================== SEARCH ================================
 
-% Starting search at 0.00 seconds.
+% Starting search at 0.01 seconds.
 
-given #1 (I,wt=2): 20 -l1 | -l3.  [clausify(2)].
+given #1 (I,wt=2): 21 -l2 | -l3.  [clausify(4)].
 
 given #2 (I,wt=2): 22 t1 | t3.  [clausify(7)].
 
@@ -168,56 +168,80 @@ given #3 (I,wt=2): 23 t2 | t1.  [clausify(7)].
 
 given #4 (I,wt=2): 24 t2 | t3.  [clausify(7)].
 
-given #5 (I,wt=2): 25 -l1 | -t1.  [clausify(8)].
+given #5 (I,wt=2): 26 -l2 | -t2.  [clausify(9)].
 
 given #6 (I,wt=2): 27 -l3 | -t3.  [clausify(10)].
 
-given #7 (I,wt=2): 28 -l1 | t2.  [clausify(11)].
+given #7 (I,wt=2): 29 -l2 | t2.  [clausify(12)].
 
 given #8 (I,wt=2): 30 -l3 | t1.  [clausify(13)].
 
 given #9 (I,wt=2): 31 -t1 | -t2.  [clausify(14)].
 
-given #10 (I,wt=1): 32 -l2.  [deny(17)].
+given #10 (I,wt=1): 32 -l1.  [deny(17)].
 
-given #11 (I,wt=2): 33 l1 | l3.  [back_unit_del(18),unit_del(b,32)].
+given #11 (I,wt=2): 33 l2 | l3.  [back_unit_del(18),unit_del(a,32)].
 
 given #12 (A,wt=2): 34 -l3 | t2.  [resolve(27,b,24,b)].
 
-given #13 (T,wt=2): 35 l1 | t1.  [resolve(33,b,30,a)].
+given #13 (T,wt=2): 35 l2 | t1.  [resolve(33,b,30,a)].
 
-given #14 (T,wt=2): 36 t2 | l1.  [resolve(34,a,33,b)].
+given #14 (T,wt=2): 36 t2 | l2.  [resolve(34,a,33,b)].
 
-given #15 (T,wt=1): 37 t2.  [resolve(36,b,28,a),merge(b)].
+============================== PROOF =================================
 
-given #16 (T,wt=1): 39 l1.  [back_unit_del(35),unit_del(b,38)].
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 23.
+% Level of proof is 6.
+% Maximum clause weight is 3.000.
+% Given clauses 14.
 
-given #17 (A,wt=1): 38 -t1.  [back_unit_del(31),unit_del(b,37)].
+7 t1 & t2 | t2 & t3 | t1 & t3 # label(non_clause).  [assumption].
+9 l2 -> -t2 # label(non_clause).  [assumption].
+10 l3 -> -t3 # label(non_clause).  [assumption].
+12 l2 -> t2 # label(non_clause).  [assumption].
+13 l3 -> t1 # label(non_clause).  [assumption].
+14 t1 & t2 -> -t2 | -t2 # label(non_clause).  [assumption].
+17 l1 # label(non_clause) # label(goal).  [goal].
+18 l1 | l2 | l3.  [assumption].
+24 t2 | t3.  [clausify(7)].
+26 -l2 | -t2.  [clausify(9)].
+27 -l3 | -t3.  [clausify(10)].
+29 -l2 | t2.  [clausify(12)].
+30 -l3 | t1.  [clausify(13)].
+31 -t1 | -t2.  [clausify(14)].
+32 -l1.  [deny(17)].
+33 l2 | l3.  [back_unit_del(18),unit_del(a,32)].
+34 -l3 | t2.  [resolve(27,b,24,b)].
+35 l2 | t1.  [resolve(33,b,30,a)].
+36 t2 | l2.  [resolve(34,a,33,b)].
+37 t1 | -t2.  [resolve(35,a,26,a)].
+38 t2.  [resolve(36,b,29,a),merge(b)].
+39 t1.  [back_unit_del(37),unit_del(b,38)].
+40 $F.  [back_unit_del(31),unit_del(a,39),unit_del(b,38)].
 
-given #18 (F,wt=1): 40 -l3.  [back_unit_del(30),unit_del(b,38)].
-
-given #19 (T,wt=1): 41 t3.  [back_unit_del(22),unit_del(a,38)].
+============================== end of proof ==========================
 
 ============================== STATISTICS ============================
 
-Given=19. Generated=36. Kept=24. proofs=0.
-Usable=6. Sos=0. Demods=0. Limbo=0, Disabled=38. Hints=0.
+Given=14. Generated=33. Kept=22. proofs=1.
+Usable=8. Sos=0. Demods=0. Limbo=2, Disabled=32. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=12. Back_subsumed=12.
+Forward_subsumed=10. Back_subsumed=9.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=6.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=3.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=7. Nonunit_bsub_feature_tests=30.
+Nonunit_fsub_feature_tests=7. Nonunit_bsub_feature_tests=28.
 Megabytes=0.06.
-User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
 ============================== end of search =========================
 
-SEARCH FAILED
+THEOREM PROVED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 10056 exit (sos_empty) Sun Dec  1 00:24:28 2024
+Process 4742 exit (max_proofs) Sun Dec  1 22:48:01 2024

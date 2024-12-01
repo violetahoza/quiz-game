@@ -11,7 +11,7 @@ def startPage():
     for widget in gui.winfo_children():
         widget.destroy()
 
-    image_path = "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/quiz-game/quiz.jpg"  # Ensure this is correct
+    image_path = "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/quiz-game/quiz.jpg"  
 
     try:
         background_image = Image.open(image_path)  # Try loading the image
@@ -163,6 +163,55 @@ def questionPage2():
 def questionPage3():
     for widget in gui.winfo_children():
         widget.destroy()
+
+     # Title for the question
+    title = tk.Label(gui, text="Question 3: Einstein's Riddle", font=('Helvetica bold', 24), fg="#6f2bae", bg="#c3b5df")
+    title.pack(pady=20)
+
+    # Create a frame for the question description
+    descriptionFrame = tk.Frame(gui, bg="#e7dfee")
+    descriptionFrame.pack(pady=(10, 20), padx=10)
+
+    # Create a Text widget for the question description
+    questionDescription = tk.Text(descriptionFrame, wrap=tk.WORD, height=12, width=80, bg="#f0f0f0", fg="#40031e", font=('Helvetica', 12)) 
+    questionDescription.insert(tk.END, 
+        "There are five houses in a row: a, b, c, d and e. Each has a different color (red, green, yellow, blue, white) and an owner of different nationality. The owners have differrent pets, smoke a certain brand of cigar and preffer different drinks. We know that:\n"
+        "1. The Brit lives in the red house.\n" 
+        "2. The Swede keeps dogs as pets.\n"
+        "3. The Dane drinks tea.\n"
+        "4. The green house is on the immediate left of the white house.\n"
+        "5. The green house's owner drinks coffee.\n"
+        "6. The owner who smokes Pall Mall rears birds.\n"
+        "7. The owner of the yellow house smokes Dunhill.\n"
+        "8. The owner living in the center house drinks milk.\n"
+        "9. The Norwegian lives in the first house.\n"
+        "10. The owner who keeps the horse lives next to the one who smokes Dunhill.\n"
+        "11. The owner who smokes Blends lives next to the one who keeps cats.\n"
+        "12. The owner who smokes Bluemasters drinks beer.\n"
+        "13. The German smokes Prince.\n"
+        "14. The Norwegian lives next to the blue house.\n"
+        "15. The owner who smokes Blends lives next to the one who drinks water.\n"
+        "Who owns the fish?\n"
+    )
+    questionDescription.config(state=tk.DISABLED)  # Make the Text widget read-only
+    questionDescription.pack()
+
+    # Create a frame for the room buttons
+    buttonFrame = tk.Frame(gui, bg="#c3b5df")
+    buttonFrame.pack(pady=(10, 20))  # Add some padding above and below the button frame
+
+    btn1 = tk.Button(buttonFrame, text="The Brit", fg="white", bg="#8b5ebf", width=10, height=2, command=lambda: [revealAnswer(prover.puzzle(3, 1))])
+    btn1.grid(row=0, column=0, padx=10)
+    btn2 = tk.Button(buttonFrame, text="The Swede", fg="white", bg="#8b5ebf", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(3, 2))])
+    btn2.grid(row=0, column=1, padx=10)  
+    btn3 = tk.Button(buttonFrame, text="The Dane", fg="white", bg="#8b5ebf", width=10, height=2, command=lambda: [revealAnswer(prover.puzzle(3, 3))])
+    btn3.grid(row=0, column=2, padx=10)
+    btn4 = tk.Button(buttonFrame, text="The Norwegian", fg="white", bg="#8b5ebf", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(3, 4))])
+    btn4.grid(row=0, column=3, padx=10)  
+    btn5 = tk.Button(buttonFrame, text="The German", fg="white", bg="#8b5ebf", width=10, height=2,  command=lambda: [revealAnswer(prover.puzzle(3, 5))])
+    btn5.grid(row=0, column=4, padx=10) 
+    backButton = tk.Button(gui, text="Back", command=chooseQuestion, fg="white", bg="#8b5ebf", width=10, height=2)  
+    backButton.pack(pady=20)  
 
     gui.mainloop()
 
