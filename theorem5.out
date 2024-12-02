@@ -1,0 +1,757 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 3465 was started by violeta on LAPTOP-J1T1GSAL,
+Mon Dec  2 17:25:31 2024
+The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+A_b <-> B_b.
+A_r | B_r.
+-(A_r & B_r).
+A_r -> -B_r.
+B_r -> -A_r.
+A_r <-> C_r.
+A_h | C_h.
+-(A_h & C_h).
+A_h -> -C_h.
+C_h -> -A_h.
+B_b | C_b.
+-(B_b & C_b).
+B_b -> -C_b.
+C_b -> -B_b.
+B_h | C_h.
+-(B_h & C_h).
+B_h -> -C_h.
+C_h -> -B_h.
+A_b & -A_r & -A_h | -A_b & A_r & -A_h | -A_b & -A_r & A_h -> A_one.
+B_b & -B_r & -B_h | -B_b & B_r & -B_h | -B_b & -B_r & B_h -> B_one.
+C_b & -C_r & -C_h | -C_b & C_r & -C_h | -C_b & -C_r & C_h -> C_one.
+A_b & A_r & -A_h | A_b & -A_r & A_h | -A_b & A_r & A_h -> A_two.
+B_b & B_r & -B_h | B_b & -B_r & B_h | -B_b & B_r & B_h -> B_two.
+C_b & C_r & -C_h | C_b & -C_r & C_h | -C_b & C_r & C_h -> C_two.
+A_one & -B_one & -C_one | A_two & -B_two & -C_two <-> M_A.
+B_one & -A_one & -C_one | B_two & -A_two & -C_two <-> M_B.
+C_one & -A_one & -B_one | C_two & -A_two & -B_two <-> M_C.
+-(M_A & M_B & M_C).
+M_A | M_B | M_C.
+end_of_list.
+
+formulas(goals).
+M_B.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 A_b <-> B_b # label(non_clause).  [assumption].
+2 -(A_r & B_r) # label(non_clause).  [assumption].
+3 A_r -> -B_r # label(non_clause).  [assumption].
+4 B_r -> -A_r # label(non_clause).  [assumption].
+5 A_r <-> C_r # label(non_clause).  [assumption].
+6 -(A_h & C_h) # label(non_clause).  [assumption].
+7 A_h -> -C_h # label(non_clause).  [assumption].
+8 C_h -> -A_h # label(non_clause).  [assumption].
+9 -(B_b & C_b) # label(non_clause).  [assumption].
+10 B_b -> -C_b # label(non_clause).  [assumption].
+11 C_b -> -B_b # label(non_clause).  [assumption].
+12 -(B_h & C_h) # label(non_clause).  [assumption].
+13 B_h -> -C_h # label(non_clause).  [assumption].
+14 C_h -> -B_h # label(non_clause).  [assumption].
+15 A_b & -A_r & -A_h | -A_b & A_r & -A_h | -A_b & -A_r & A_h -> A_one # label(non_clause).  [assumption].
+16 B_b & -B_r & -B_h | -B_b & B_r & -B_h | -B_b & -B_r & B_h -> B_one # label(non_clause).  [assumption].
+17 C_b & -C_r & -C_h | -C_b & C_r & -C_h | -C_b & -C_r & C_h -> C_one # label(non_clause).  [assumption].
+18 A_b & A_r & -A_h | A_b & -A_r & A_h | -A_b & A_r & A_h -> A_two # label(non_clause).  [assumption].
+19 B_b & B_r & -B_h | B_b & -B_r & B_h | -B_b & B_r & B_h -> B_two # label(non_clause).  [assumption].
+20 C_b & C_r & -C_h | C_b & -C_r & C_h | -C_b & C_r & C_h -> C_two # label(non_clause).  [assumption].
+21 A_one & -B_one & -C_one | A_two & -B_two & -C_two <-> M_A # label(non_clause).  [assumption].
+22 B_one & -A_one & -C_one | B_two & -A_two & -C_two <-> M_B # label(non_clause).  [assumption].
+23 C_one & -A_one & -B_one | C_two & -A_two & -B_two <-> M_C # label(non_clause).  [assumption].
+24 -(M_A & M_B & M_C) # label(non_clause).  [assumption].
+25 M_B # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-A_b | B_b.  [clausify(1)].
+A_b | -B_b.  [clausify(1)].
+A_r | B_r.  [assumption].
+-A_r | -B_r.  [clausify(2)].
+-A_r | -B_r.  [clausify(3)].
+-B_r | -A_r.  [clausify(4)].
+-A_r | C_r.  [clausify(5)].
+A_r | -C_r.  [clausify(5)].
+A_h | C_h.  [assumption].
+-A_h | -C_h.  [clausify(6)].
+-A_h | -C_h.  [clausify(7)].
+-C_h | -A_h.  [clausify(8)].
+B_b | C_b.  [assumption].
+-B_b | -C_b.  [clausify(9)].
+-B_b | -C_b.  [clausify(10)].
+-C_b | -B_b.  [clausify(11)].
+B_h | C_h.  [assumption].
+-B_h | -C_h.  [clausify(12)].
+-B_h | -C_h.  [clausify(13)].
+-C_h | -B_h.  [clausify(14)].
+-A_b | A_r | A_h | A_one.  [clausify(15)].
+A_b | -A_r | A_h | A_one.  [clausify(15)].
+A_b | A_r | -A_h | A_one.  [clausify(15)].
+-B_b | B_r | B_h | B_one.  [clausify(16)].
+B_b | -B_r | B_h | B_one.  [clausify(16)].
+B_b | B_r | -B_h | B_one.  [clausify(16)].
+-C_b | C_r | C_h | C_one.  [clausify(17)].
+C_b | -C_r | C_h | C_one.  [clausify(17)].
+C_b | C_r | -C_h | C_one.  [clausify(17)].
+-A_b | -A_r | A_h | A_two.  [clausify(18)].
+-A_b | A_r | -A_h | A_two.  [clausify(18)].
+A_b | -A_r | -A_h | A_two.  [clausify(18)].
+-B_b | -B_r | B_h | B_two.  [clausify(19)].
+-B_b | B_r | -B_h | B_two.  [clausify(19)].
+B_b | -B_r | -B_h | B_two.  [clausify(19)].
+-C_b | -C_r | C_h | C_two.  [clausify(20)].
+-C_b | C_r | -C_h | C_two.  [clausify(20)].
+C_b | -C_r | -C_h | C_two.  [clausify(20)].
+-A_one | B_one | C_one | M_A.  [clausify(21)].
+-A_two | B_two | C_two | M_A.  [clausify(21)].
+A_one | A_two | -M_A.  [clausify(21)].
+A_one | -B_two | -M_A.  [clausify(21)].
+A_one | -C_two | -M_A.  [clausify(21)].
+-B_one | A_two | -M_A.  [clausify(21)].
+-B_one | -B_two | -M_A.  [clausify(21)].
+-B_one | -C_two | -M_A.  [clausify(21)].
+-C_one | A_two | -M_A.  [clausify(21)].
+-C_one | -B_two | -M_A.  [clausify(21)].
+-C_one | -C_two | -M_A.  [clausify(21)].
+-B_one | A_one | C_one | M_B.  [clausify(22)].
+-B_two | A_two | C_two | M_B.  [clausify(22)].
+B_one | B_two | -M_B.  [clausify(22)].
+B_one | -A_two | -M_B.  [clausify(22)].
+B_one | -C_two | -M_B.  [clausify(22)].
+-A_one | B_two | -M_B.  [clausify(22)].
+-A_one | -A_two | -M_B.  [clausify(22)].
+-A_one | -C_two | -M_B.  [clausify(22)].
+-C_one | B_two | -M_B.  [clausify(22)].
+-C_one | -A_two | -M_B.  [clausify(22)].
+-C_one | -C_two | -M_B.  [clausify(22)].
+-C_one | A_one | B_one | M_C.  [clausify(23)].
+-C_two | A_two | B_two | M_C.  [clausify(23)].
+C_one | C_two | -M_C.  [clausify(23)].
+C_one | -A_two | -M_C.  [clausify(23)].
+C_one | -B_two | -M_C.  [clausify(23)].
+-A_one | C_two | -M_C.  [clausify(23)].
+-A_one | -A_two | -M_C.  [clausify(23)].
+-A_one | -B_two | -M_C.  [clausify(23)].
+-B_one | C_two | -M_C.  [clausify(23)].
+-B_one | -A_two | -M_C.  [clausify(23)].
+-B_one | -B_two | -M_C.  [clausify(23)].
+-M_A | -M_B | -M_C.  [clausify(24)].
+M_A | M_B | M_C.  [assumption].
+-M_B.  [deny(25)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ A_one, A_two, B_one, B_two, C_one, C_two, A_r, B_b, A_b, C_h, C_r, M_A, M_B, M_C, A_h, B_h, B_r, C_b ]).
+Function symbol precedence:  function_order([ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      26 -A_b | B_b.  [clausify(1)].
+kept:      27 A_b | -B_b.  [clausify(1)].
+kept:      28 A_r | B_r.  [assumption].
+kept:      29 -A_r | -B_r.  [clausify(2)].
+kept:      30 -A_r | C_r.  [clausify(5)].
+kept:      31 A_r | -C_r.  [clausify(5)].
+kept:      32 A_h | C_h.  [assumption].
+kept:      33 -A_h | -C_h.  [clausify(6)].
+kept:      34 B_b | C_b.  [assumption].
+kept:      35 -B_b | -C_b.  [clausify(9)].
+kept:      36 B_h | C_h.  [assumption].
+kept:      37 -B_h | -C_h.  [clausify(12)].
+kept:      38 -A_b | A_r | A_h | A_one.  [clausify(15)].
+kept:      39 A_b | -A_r | A_h | A_one.  [clausify(15)].
+kept:      40 A_b | A_r | -A_h | A_one.  [clausify(15)].
+kept:      41 -B_b | B_r | B_h | B_one.  [clausify(16)].
+kept:      42 B_b | -B_r | B_h | B_one.  [clausify(16)].
+kept:      43 B_b | B_r | -B_h | B_one.  [clausify(16)].
+kept:      44 -C_b | C_r | C_h | C_one.  [clausify(17)].
+kept:      45 C_b | -C_r | C_h | C_one.  [clausify(17)].
+kept:      46 C_b | C_r | -C_h | C_one.  [clausify(17)].
+kept:      47 -A_b | -A_r | A_h | A_two.  [clausify(18)].
+kept:      48 -A_b | A_r | -A_h | A_two.  [clausify(18)].
+kept:      49 A_b | -A_r | -A_h | A_two.  [clausify(18)].
+kept:      50 -B_b | -B_r | B_h | B_two.  [clausify(19)].
+kept:      51 -B_b | B_r | -B_h | B_two.  [clausify(19)].
+kept:      52 B_b | -B_r | -B_h | B_two.  [clausify(19)].
+kept:      53 -C_b | -C_r | C_h | C_two.  [clausify(20)].
+kept:      54 -C_b | C_r | -C_h | C_two.  [clausify(20)].
+kept:      55 C_b | -C_r | -C_h | C_two.  [clausify(20)].
+kept:      56 -A_one | B_one | C_one | M_A.  [clausify(21)].
+kept:      57 -A_two | B_two | C_two | M_A.  [clausify(21)].
+kept:      58 A_one | A_two | -M_A.  [clausify(21)].
+kept:      59 A_one | -B_two | -M_A.  [clausify(21)].
+kept:      60 A_one | -C_two | -M_A.  [clausify(21)].
+kept:      61 -B_one | A_two | -M_A.  [clausify(21)].
+kept:      62 -B_one | -B_two | -M_A.  [clausify(21)].
+kept:      63 -B_one | -C_two | -M_A.  [clausify(21)].
+kept:      64 -C_one | A_two | -M_A.  [clausify(21)].
+kept:      65 -C_one | -B_two | -M_A.  [clausify(21)].
+kept:      66 -C_one | -C_two | -M_A.  [clausify(21)].
+kept:      67 -B_one | A_one | C_one | M_B.  [clausify(22)].
+kept:      68 -B_two | A_two | C_two | M_B.  [clausify(22)].
+kept:      69 B_one | B_two | -M_B.  [clausify(22)].
+kept:      70 B_one | -A_two | -M_B.  [clausify(22)].
+kept:      71 B_one | -C_two | -M_B.  [clausify(22)].
+kept:      72 -A_one | B_two | -M_B.  [clausify(22)].
+kept:      73 -A_one | -A_two | -M_B.  [clausify(22)].
+kept:      74 -A_one | -C_two | -M_B.  [clausify(22)].
+kept:      75 -C_one | B_two | -M_B.  [clausify(22)].
+kept:      76 -C_one | -A_two | -M_B.  [clausify(22)].
+kept:      77 -C_one | -C_two | -M_B.  [clausify(22)].
+kept:      78 -C_one | A_one | B_one | M_C.  [clausify(23)].
+kept:      79 -C_two | A_two | B_two | M_C.  [clausify(23)].
+kept:      80 C_one | C_two | -M_C.  [clausify(23)].
+kept:      81 C_one | -A_two | -M_C.  [clausify(23)].
+kept:      82 C_one | -B_two | -M_C.  [clausify(23)].
+kept:      83 -A_one | C_two | -M_C.  [clausify(23)].
+kept:      84 -A_one | -A_two | -M_C.  [clausify(23)].
+kept:      85 -A_one | -B_two | -M_C.  [clausify(23)].
+kept:      86 -B_one | C_two | -M_C.  [clausify(23)].
+kept:      87 -B_one | -A_two | -M_C.  [clausify(23)].
+kept:      88 -B_one | -B_two | -M_C.  [clausify(23)].
+kept:      89 -M_A | -M_B | -M_C.  [clausify(24)].
+kept:      90 M_A | M_B | M_C.  [assumption].
+kept:      91 -M_B.  [deny(25)].
+kept:      92 M_A | M_C.  [back_unit_del(90),unit_del(b,91)].
+kept:      93 -B_two | A_two | C_two.  [back_unit_del(68),unit_del(d,91)].
+kept:      94 -B_one | A_one | C_one.  [back_unit_del(67),unit_del(d,91)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+26 -A_b | B_b.  [clausify(1)].
+27 A_b | -B_b.  [clausify(1)].
+28 A_r | B_r.  [assumption].
+29 -A_r | -B_r.  [clausify(2)].
+30 -A_r | C_r.  [clausify(5)].
+31 A_r | -C_r.  [clausify(5)].
+32 A_h | C_h.  [assumption].
+33 -A_h | -C_h.  [clausify(6)].
+34 B_b | C_b.  [assumption].
+35 -B_b | -C_b.  [clausify(9)].
+36 B_h | C_h.  [assumption].
+37 -B_h | -C_h.  [clausify(12)].
+38 -A_b | A_r | A_h | A_one.  [clausify(15)].
+39 A_b | -A_r | A_h | A_one.  [clausify(15)].
+40 A_b | A_r | -A_h | A_one.  [clausify(15)].
+41 -B_b | B_r | B_h | B_one.  [clausify(16)].
+42 B_b | -B_r | B_h | B_one.  [clausify(16)].
+43 B_b | B_r | -B_h | B_one.  [clausify(16)].
+44 -C_b | C_r | C_h | C_one.  [clausify(17)].
+45 C_b | -C_r | C_h | C_one.  [clausify(17)].
+46 C_b | C_r | -C_h | C_one.  [clausify(17)].
+47 -A_b | -A_r | A_h | A_two.  [clausify(18)].
+48 -A_b | A_r | -A_h | A_two.  [clausify(18)].
+49 A_b | -A_r | -A_h | A_two.  [clausify(18)].
+50 -B_b | -B_r | B_h | B_two.  [clausify(19)].
+51 -B_b | B_r | -B_h | B_two.  [clausify(19)].
+52 B_b | -B_r | -B_h | B_two.  [clausify(19)].
+53 -C_b | -C_r | C_h | C_two.  [clausify(20)].
+54 -C_b | C_r | -C_h | C_two.  [clausify(20)].
+55 C_b | -C_r | -C_h | C_two.  [clausify(20)].
+56 -A_one | B_one | C_one | M_A.  [clausify(21)].
+57 -A_two | B_two | C_two | M_A.  [clausify(21)].
+58 A_one | A_two | -M_A.  [clausify(21)].
+59 A_one | -B_two | -M_A.  [clausify(21)].
+60 A_one | -C_two | -M_A.  [clausify(21)].
+61 -B_one | A_two | -M_A.  [clausify(21)].
+62 -B_one | -B_two | -M_A.  [clausify(21)].
+63 -B_one | -C_two | -M_A.  [clausify(21)].
+64 -C_one | A_two | -M_A.  [clausify(21)].
+65 -C_one | -B_two | -M_A.  [clausify(21)].
+66 -C_one | -C_two | -M_A.  [clausify(21)].
+78 -C_one | A_one | B_one | M_C.  [clausify(23)].
+79 -C_two | A_two | B_two | M_C.  [clausify(23)].
+80 C_one | C_two | -M_C.  [clausify(23)].
+81 C_one | -A_two | -M_C.  [clausify(23)].
+82 C_one | -B_two | -M_C.  [clausify(23)].
+83 -A_one | C_two | -M_C.  [clausify(23)].
+84 -A_one | -A_two | -M_C.  [clausify(23)].
+85 -A_one | -B_two | -M_C.  [clausify(23)].
+86 -B_one | C_two | -M_C.  [clausify(23)].
+87 -B_one | -A_two | -M_C.  [clausify(23)].
+88 -B_one | -B_two | -M_C.  [clausify(23)].
+91 -M_B.  [deny(25)].
+92 M_A | M_C.  [back_unit_del(90),unit_del(b,91)].
+93 -B_two | A_two | C_two.  [back_unit_del(68),unit_del(d,91)].
+94 -B_one | A_one | C_one.  [back_unit_del(67),unit_del(d,91)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=2): 26 -A_b | B_b.  [clausify(1)].
+
+given #2 (I,wt=2): 27 A_b | -B_b.  [clausify(1)].
+
+given #3 (I,wt=2): 28 A_r | B_r.  [assumption].
+
+given #4 (I,wt=2): 29 -A_r | -B_r.  [clausify(2)].
+
+given #5 (I,wt=2): 30 -A_r | C_r.  [clausify(5)].
+
+given #6 (I,wt=2): 31 A_r | -C_r.  [clausify(5)].
+
+given #7 (I,wt=2): 32 A_h | C_h.  [assumption].
+
+given #8 (I,wt=2): 33 -A_h | -C_h.  [clausify(6)].
+
+given #9 (I,wt=2): 34 B_b | C_b.  [assumption].
+
+given #10 (I,wt=2): 35 -B_b | -C_b.  [clausify(9)].
+
+given #11 (I,wt=2): 36 B_h | C_h.  [assumption].
+
+given #12 (I,wt=2): 37 -B_h | -C_h.  [clausify(12)].
+
+given #13 (I,wt=4): 38 -A_b | A_r | A_h | A_one.  [clausify(15)].
+
+given #14 (I,wt=4): 39 A_b | -A_r | A_h | A_one.  [clausify(15)].
+
+given #15 (I,wt=4): 40 A_b | A_r | -A_h | A_one.  [clausify(15)].
+
+given #16 (I,wt=4): 41 -B_b | B_r | B_h | B_one.  [clausify(16)].
+
+given #17 (I,wt=4): 42 B_b | -B_r | B_h | B_one.  [clausify(16)].
+
+given #18 (I,wt=4): 43 B_b | B_r | -B_h | B_one.  [clausify(16)].
+
+given #19 (I,wt=4): 44 -C_b | C_r | C_h | C_one.  [clausify(17)].
+
+given #20 (I,wt=4): 45 C_b | -C_r | C_h | C_one.  [clausify(17)].
+
+given #21 (I,wt=4): 46 C_b | C_r | -C_h | C_one.  [clausify(17)].
+
+given #22 (I,wt=4): 47 -A_b | -A_r | A_h | A_two.  [clausify(18)].
+
+given #23 (I,wt=4): 48 -A_b | A_r | -A_h | A_two.  [clausify(18)].
+
+given #24 (I,wt=4): 49 A_b | -A_r | -A_h | A_two.  [clausify(18)].
+
+given #25 (I,wt=4): 50 -B_b | -B_r | B_h | B_two.  [clausify(19)].
+
+given #26 (I,wt=4): 51 -B_b | B_r | -B_h | B_two.  [clausify(19)].
+
+given #27 (I,wt=4): 52 B_b | -B_r | -B_h | B_two.  [clausify(19)].
+
+given #28 (I,wt=4): 53 -C_b | -C_r | C_h | C_two.  [clausify(20)].
+
+given #29 (I,wt=4): 54 -C_b | C_r | -C_h | C_two.  [clausify(20)].
+
+given #30 (I,wt=4): 55 C_b | -C_r | -C_h | C_two.  [clausify(20)].
+
+given #31 (I,wt=4): 56 -A_one | B_one | C_one | M_A.  [clausify(21)].
+
+given #32 (I,wt=4): 57 -A_two | B_two | C_two | M_A.  [clausify(21)].
+
+given #33 (I,wt=3): 58 A_one | A_two | -M_A.  [clausify(21)].
+
+given #34 (I,wt=3): 59 A_one | -B_two | -M_A.  [clausify(21)].
+
+given #35 (I,wt=3): 60 A_one | -C_two | -M_A.  [clausify(21)].
+
+given #36 (I,wt=3): 61 -B_one | A_two | -M_A.  [clausify(21)].
+
+given #37 (I,wt=3): 62 -B_one | -B_two | -M_A.  [clausify(21)].
+
+given #38 (I,wt=3): 63 -B_one | -C_two | -M_A.  [clausify(21)].
+
+given #39 (I,wt=3): 64 -C_one | A_two | -M_A.  [clausify(21)].
+
+given #40 (I,wt=3): 65 -C_one | -B_two | -M_A.  [clausify(21)].
+
+given #41 (I,wt=3): 66 -C_one | -C_two | -M_A.  [clausify(21)].
+
+given #42 (I,wt=4): 78 -C_one | A_one | B_one | M_C.  [clausify(23)].
+
+given #43 (I,wt=4): 79 -C_two | A_two | B_two | M_C.  [clausify(23)].
+
+given #44 (I,wt=3): 80 C_one | C_two | -M_C.  [clausify(23)].
+
+given #45 (I,wt=3): 81 C_one | -A_two | -M_C.  [clausify(23)].
+
+given #46 (I,wt=3): 82 C_one | -B_two | -M_C.  [clausify(23)].
+
+given #47 (I,wt=3): 83 -A_one | C_two | -M_C.  [clausify(23)].
+
+given #48 (I,wt=3): 84 -A_one | -A_two | -M_C.  [clausify(23)].
+
+given #49 (I,wt=3): 85 -A_one | -B_two | -M_C.  [clausify(23)].
+
+given #50 (I,wt=3): 86 -B_one | C_two | -M_C.  [clausify(23)].
+
+given #51 (I,wt=3): 87 -B_one | -A_two | -M_C.  [clausify(23)].
+
+given #52 (I,wt=3): 88 -B_one | -B_two | -M_C.  [clausify(23)].
+
+given #53 (I,wt=1): 91 -M_B.  [deny(25)].
+
+given #54 (I,wt=2): 92 M_A | M_C.  [back_unit_del(90),unit_del(b,91)].
+
+given #55 (I,wt=3): 93 -B_two | A_two | C_two.  [back_unit_del(68),unit_del(d,91)].
+
+given #56 (I,wt=3): 94 -B_one | A_one | C_one.  [back_unit_del(67),unit_del(d,91)].
+
+given #57 (A,wt=4): 95 A_b | A_r | A_one | C_h.  [resolve(40,c,32,a)].
+
+given #58 (T,wt=3): 106 M_A | -B_one | -B_two.  [resolve(92,b,88,c)].
+
+given #59 (T,wt=3): 107 M_A | -B_one | -A_two.  [resolve(92,b,87,c)].
+
+given #60 (T,wt=3): 108 M_A | -B_one | C_two.  [resolve(92,b,86,c)].
+
+given #61 (T,wt=3): 109 M_A | -A_one | -B_two.  [resolve(92,b,85,c)].
+
+given #62 (A,wt=4): 96 B_b | B_h | B_one | A_r.  [resolve(42,b,28,b)].
+
+given #63 (T,wt=3): 110 M_A | -A_one | -A_two.  [resolve(92,b,84,c)].
+
+given #64 (T,wt=3): 111 M_A | -A_one | C_two.  [resolve(92,b,83,c)].
+
+given #65 (T,wt=3): 112 M_A | C_one | -B_two.  [resolve(92,b,82,c)].
+
+given #66 (T,wt=3): 113 M_A | C_one | -A_two.  [resolve(92,b,81,c)].
+
+given #67 (A,wt=4): 97 B_b | B_r | B_one | C_h.  [resolve(43,c,36,a)].
+
+given #68 (T,wt=3): 114 M_A | C_one | C_two.  [resolve(92,b,80,c)].
+
+given #69 (T,wt=4): 98 C_r | C_h | C_one | B_b.  [resolve(44,a,34,b)].
+
+given #70 (T,wt=4): 99 -A_b | A_r | A_two | C_h.  [resolve(48,c,32,a)].
+
+given #71 (T,wt=4): 100 A_b | -A_r | A_two | C_h.  [resolve(49,c,32,a)].
+
+given #72 (A,wt=4): 101 -B_b | B_h | B_two | A_r.  [resolve(50,b,28,b)].
+
+given #73 (T,wt=4): 102 -B_b | B_r | B_two | C_h.  [resolve(51,c,36,a)].
+
+given #74 (T,wt=4): 103 B_b | -B_h | B_two | A_r.  [resolve(52,b,28,b)].
+
+given #75 (T,wt=4): 104 -C_r | C_h | C_two | B_b.  [resolve(53,a,34,b)].
+
+given #76 (T,wt=4): 105 C_r | -C_h | C_two | B_b.  [resolve(54,a,34,b)].
+
+given #77 (A,wt=6): 115 A_b | A_r | A_one | C_b | C_r | C_one.  [resolve(95,d,46,c)].
+
+given #78 (T,wt=4): 116 B_b | B_one | A_r | -C_h.  [resolve(96,b,37,a)].
+
+given #79 (T,wt=4): 118 B_b | B_one | C_h | -A_r.  [resolve(97,b,29,b)].
+
+given #80 (T,wt=4): 119 C_one | C_two | -B_one | -B_two.  [resolve(114,a,62,c)].
+
+given #81 (T,wt=4): 120 C_one | C_two | -B_one | A_two.  [resolve(114,a,61,c)].
+
+given #82 (A,wt=5): 117 B_b | B_one | C_h | -B_h | B_two.  [resolve(97,b,52,b),merge(d)].
+
+given #83 (T,wt=4): 121 C_one | C_two | A_one | -B_two.  [resolve(114,a,59,c)].
+
+given #84 (T,wt=4): 122 C_one | C_two | A_one | A_two.  [resolve(114,a,58,c)].
+
+given #85 (T,wt=4): 123 C_h | C_one | B_b | A_r.  [resolve(98,a,31,b)].
+
+given #86 (T,wt=4): 124 B_b | B_two | A_r | B_one.  [resolve(103,b,96,b),merge(d),merge(f)].
+
+given #87 (A,wt=4): 125 B_b | B_two | A_r | C_h.  [resolve(103,b,36,a)].
+
+given #88 (T,wt=4): 126 C_h | C_two | B_b | C_one.  [resolve(104,a,98,a),merge(d),merge(f)].
+
+given #89 (T,wt=4): 130 B_b | B_one | C_h | B_two.  [resolve(117,d,36,a),merge(e)].
+
+given #90 (T,wt=4): 132 C_one | B_b | A_r | B_one.  [resolve(123,a,116,d),merge(d),merge(f)].
+
+given #91 (T,wt=4): 134 B_two | A_r | B_one | B_h.  [resolve(124,a,101,a),merge(e),merge(f)].
+
+given #92 (A,wt=6): 127 C_r | C_two | B_b | A_b | A_r | A_one.  [resolve(105,b,95,d)].
+
+given #93 (T,wt=4): 135 B_two | A_r | B_one | A_b.  [resolve(124,a,27,b)].
+
+given #94 (T,wt=4): 137 C_two | B_b | C_one | C_r.  [resolve(126,a,105,b),merge(e),merge(f)].
+
+given #95 (T,wt=4): 139 C_one | A_r | B_one | A_b.  [resolve(132,b,27,b)].
+
+given #96 (T,wt=4): 140 B_two | A_r | B_one | -C_h.  [resolve(134,d,37,a)].
+
+given #97 (A,wt=7): 128 A_b | A_r | A_one | C_r | C_one | -C_h | C_two.  [resolve(115,d,54,a),merge(f)].
+
+given #98 (T,wt=4): 144 C_two | B_b | C_one | A_r.  [resolve(137,d,31,b)].
+
+given #99 (T,wt=4): 149 C_two | C_one | A_r | A_b.  [resolve(144,b,27,b)].
+
+given #100 (T,wt=5): 129 B_b | B_one | A_r | A_b | A_one.  [resolve(116,d,95,d),merge(e)].
+
+given #101 (T,wt=4): 154 B_b | B_one | A_r | A_one.  [resolve(129,d,26,a),merge(e)].
+
+given #102 (A,wt=5): 131 C_one | A_one | A_two | B_two | M_C.  [resolve(122,b,79,a),merge(d)].
+
+given #103 (T,wt=4): 155 B_one | A_r | A_one | A_b.  [resolve(154,a,27,b)].
+
+given #104 (T,wt=4): 157 B_one | A_r | A_one | A_h.  [resolve(155,d,38,a),merge(d),merge(f)].
+
+given #105 (T,wt=4): 159 B_one | A_r | A_one | -C_h.  [resolve(157,d,33,a)].
+
+given #106 (T,wt=5): 136 B_b | B_two | A_r | C_r | C_two.  [resolve(125,d,105,b),merge(f)].
+
+given #107 (A,wt=5): 138 B_b | B_one | B_two | C_r | C_two.  [resolve(130,c,105,b),merge(f)].
+
+given #108 (T,wt=4): 160 B_b | B_two | A_r | C_two.  [resolve(136,d,31,b),merge(e)].
+
+given #109 (T,wt=4): 161 B_two | A_r | C_two | B_h.  [resolve(160,a,101,a),merge(e),merge(f)].
+
+given #110 (T,wt=4): 162 B_two | A_r | C_two | A_b.  [resolve(160,a,27,b)].
+
+given #111 (T,wt=4): 163 B_two | A_r | C_two | -C_h.  [resolve(161,d,37,a)].
+
+given #112 (A,wt=5): 141 C_two | B_b | A_b | A_r | A_one.  [resolve(127,a,31,b),merge(f)].
+
+given #113 (T,wt=4): 168 C_two | B_b | A_r | A_one.  [resolve(141,c,26,a),merge(e)].
+
+given #114 (T,wt=4): 169 C_two | A_r | A_one | A_b.  [resolve(168,b,27,b)].
+
+given #115 (T,wt=4): 171 C_two | A_r | A_one | A_h.  [resolve(169,d,38,a),merge(d),merge(f)].
+
+given #116 (T,wt=4): 173 C_two | A_r | A_one | -C_h.  [resolve(171,d,33,a)].
+
+given #117 (A,wt=5): 142 B_two | A_r | B_one | A_two | C_h.  [resolve(135,d,99,a),merge(d)].
+
+given #118 (T,wt=4): 177 B_two | A_r | B_one | A_two.  [resolve(142,e,140,d),merge(e),merge(f),merge(g)].
+
+given #119 (T,wt=4): 180 B_two | B_one | A_two | C_r.  [resolve(177,b,30,a)].
+
+given #120 (T,wt=5): 145 C_one | A_r | B_one | A_two | C_h.  [resolve(139,d,99,a),merge(d)].
+
+given #121 (T,wt=5): 150 C_two | C_one | A_r | A_two | C_h.  [resolve(149,d,99,a),merge(d)].
+
+given #122 (A,wt=5): 156 B_one | A_r | A_one | A_two | C_h.  [resolve(155,d,99,a),merge(d)].
+
+given #123 (T,wt=4): 188 B_one | A_r | A_one | A_two.  [resolve(156,e,159,d),merge(e),merge(f),merge(g)].
+
+given #124 (T,wt=4): 192 B_one | A_one | A_two | C_r.  [resolve(188,b,30,a)].
+
+given #125 (T,wt=5): 164 B_two | A_r | C_two | A_two | C_h.  [resolve(162,d,99,a),merge(d)].
+
+given #126 (T,wt=4): 196 B_two | A_r | C_two | A_two.  [resolve(164,e,163,d),merge(e),merge(f),merge(g)].
+
+given #127 (A,wt=5): 170 C_two | A_r | A_one | A_two | C_h.  [resolve(169,d,99,a),merge(d)].
+
+given #128 (T,wt=4): 199 B_two | C_two | A_two | C_r.  [resolve(196,b,30,a)].
+
+given #129 (T,wt=4): 200 C_two | A_r | A_one | A_two.  [resolve(170,e,173,d),merge(e),merge(f),merge(g)].
+
+given #130 (T,wt=4): 206 C_two | A_one | A_two | C_r.  [resolve(200,b,30,a)].
+
+given #131 (T,wt=5): 178 B_two | B_one | A_two | A_b | C_h.  [resolve(177,b,100,b),merge(e)].
+
+given #132 (A,wt=6): 182 B_two | B_one | A_two | C_b | C_h | C_one.  [resolve(180,d,45,b)].
+
+given #133 (T,wt=5): 189 B_one | A_one | A_two | B_b | C_h.  [resolve(188,b,118,d),merge(e)].
+
+given #134 (T,wt=5): 190 B_one | A_one | A_two | A_b | C_h.  [resolve(188,b,100,b),merge(e)].
+
+given #135 (T,wt=5): 191 B_one | A_one | A_two | A_b | A_h.  [resolve(188,b,39,b),merge(f)].
+
+given #136 (T,wt=5): 197 B_two | C_two | A_two | A_b | C_h.  [resolve(196,b,100,b),merge(e)].
+
+given #137 (A,wt=6): 184 C_one | A_r | B_one | A_two | C_b | C_r.  [resolve(145,e,46,c),merge(g)].
+
+given #138 (T,wt=5): 201 B_two | C_two | A_two | C_h | B_b.  [resolve(199,d,104,a),merge(e)].
+
+given #139 (T,wt=5): 202 B_two | C_two | A_two | C_b | -C_h.  [resolve(199,d,55,b),merge(f)].
+
+given #140 (T,wt=5): 204 C_two | A_one | A_two | A_b | C_h.  [resolve(200,b,100,b),merge(e)].
+
+given #141 (T,wt=5): 205 C_two | A_one | A_two | A_b | A_h.  [resolve(200,b,39,b),merge(f)].
+
+given #142 (A,wt=6): 186 C_two | C_one | A_r | A_two | C_b | C_r.  [resolve(150,e,46,c),merge(g)].
+
+given #143 (T,wt=5): 207 C_two | A_one | A_two | C_h | B_b.  [resolve(206,d,104,a),merge(e)].
+
+given #144 (T,wt=5): 208 C_two | A_one | A_two | C_b | -C_h.  [resolve(206,d,55,b),merge(f)].
+
+given #145 (T,wt=5): 211 B_one | A_one | A_two | A_b | -A_r.  [resolve(191,e,49,c),merge(e),merge(g)].
+
+given #146 (T,wt=4): 222 B_one | A_one | A_two | A_b.  [resolve(211,e,188,b),merge(e),merge(f),merge(g)].
+
+given #147 (A,wt=6): 194 B_one | A_one | A_two | C_b | C_h | C_one.  [resolve(192,d,45,b)].
+
+given #148 (T,wt=4): 224 B_one | A_one | A_two | B_b.  [resolve(222,d,26,a)].
+
+given #149 (T,wt=5): 215 B_two | C_two | A_two | C_b | A_b.  [resolve(202,e,197,e),merge(e),merge(f),merge(g)].
+
+given #150 (T,wt=5): 216 C_two | A_one | A_two | A_b | -A_r.  [resolve(205,e,49,c),merge(e),merge(g)].
+
+given #151 (T,wt=4): 228 C_two | A_one | A_two | A_b.  [resolve(216,e,200,b),merge(e),merge(f),merge(g)].
+
+given #152 (A,wt=6): 203 B_two | C_two | A_two | C_b | C_h | C_one.  [resolve(199,d,45,b)].
+
+given #153 (T,wt=4): 230 C_two | A_one | A_two | B_b.  [resolve(228,d,26,a)].
+
+given #154 (T,wt=5): 223 B_one | A_one | A_two | -A_r | A_h.  [resolve(222,d,47,a),merge(f)].
+
+given #155 (T,wt=4): 235 B_one | A_one | A_two | A_h.  [resolve(223,d,188,b),merge(e),merge(f),merge(g)].
+
+given #156 (T,wt=4): 236 B_one | A_one | A_two | -C_h.  [resolve(235,d,33,a)].
+
+given #157 (A,wt=6): 210 B_two | B_one | A_two | C_h | C_one | -B_b.  [resolve(182,d,35,b)].
+
+given #158 (T,wt=5): 227 B_one | A_one | A_two | B_r | B_h.  [resolve(224,d,41,a),merge(f)].
+
+given #159 (T,wt=5): 229 C_two | A_one | A_two | -A_r | A_h.  [resolve(228,d,47,a),merge(f)].
+
+given #160 (T,wt=4): 240 C_two | A_one | A_two | A_h.  [resolve(229,d,200,b),merge(e),merge(f),merge(g)].
+
+given #161 (T,wt=4): 241 C_two | A_one | A_two | -C_h.  [resolve(240,d,33,a)].
+
+given #162 (A,wt=6): 214 C_one | A_r | B_one | A_two | C_r | -B_b.  [resolve(184,e,35,b)].
+
+given #163 (T,wt=5): 239 B_one | A_one | A_two | B_h | -A_r.  [resolve(227,d,29,b)].
+
+given #164 (T,wt=4): 245 B_one | A_one | A_two | B_h.  [resolve(239,e,188,b),merge(e),merge(f),merge(g)].
+
+given #165 (T,wt=5): 243 C_one | A_r | B_one | A_two | C_r.  [resolve(214,f,132,b),merge(f),merge(g),merge(h)].
+
+given #166 (T,wt=4): 248 C_one | A_r | B_one | A_two.  [resolve(243,e,31,b),merge(e)].
+
+given #167 (A,wt=6): 218 C_two | C_one | A_r | A_two | C_r | -C_h.  [resolve(186,e,54,a),merge(f),merge(h)].
+
+given #168 (T,wt=4): 251 C_one | B_one | A_two | C_r.  [resolve(248,b,30,a)].
+
+given #169 (T,wt=5): 249 C_one | B_one | A_two | B_b | C_h.  [resolve(248,b,118,d),merge(e)].
+
+given #170 (T,wt=5): 250 C_one | B_one | A_two | A_b | C_h.  [resolve(248,b,100,b),merge(e)].
+
+given #171 (T,wt=5): 252 C_two | C_one | A_r | A_two | C_r.  [resolve(218,f,150,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #172 (A,wt=6): 225 B_one | A_one | A_two | C_h | C_one | -B_b.  [resolve(194,d,35,b)].
+
+given #173 (T,wt=4): 256 C_two | C_one | A_r | A_two.  [resolve(252,e,31,b),merge(e)].
+
+given #174 (T,wt=4): 259 C_two | C_one | A_two | C_r.  [resolve(256,c,30,a)].
+
+given #175 (T,wt=5): 254 C_one | B_one | A_two | C_b | C_h.  [resolve(251,d,45,b),merge(f)].
+
+given #176 (T,wt=5): 257 B_one | A_one | A_two | C_h | C_one.  [resolve(225,f,224,d),merge(f),merge(g),merge(h)].
+
+given #177 (A,wt=6): 226 B_one | A_one | A_two | B_r | B_two | C_h.  [resolve(224,d,102,a)].
+
+given #178 (T,wt=4): 264 B_one | A_one | A_two | C_one.  [resolve(257,d,236,d),merge(e),merge(f),merge(g)].
+
+given #179 (T,wt=4): 266 B_one | A_one | A_two | M_C.  [resolve(264,d,78,a),merge(d),merge(e)].
+
+given #180 (T,wt=5): 258 C_two | C_one | A_two | A_b | C_h.  [resolve(256,c,100,b),merge(e)].
+
+given #181 (T,wt=5): 260 C_two | C_one | A_two | C_b | -C_h.  [resolve(259,d,55,b),merge(f)].
+
+given #182 (A,wt=6): 231 B_two | C_two | A_two | C_h | C_one | -C_r.  [resolve(203,d,53,a),merge(g),merge(h)].
+
+given #183 (T,wt=5): 261 C_two | C_one | A_two | C_b | C_h.  [resolve(259,d,45,b),merge(f)].
+
+given #184 (T,wt=5): 263 C_one | B_one | A_two | C_h | -B_b.  [resolve(254,d,35,b)].
+
+given #185 (T,wt=5): 267 C_two | C_one | A_two | C_b | A_b.  [resolve(260,e,258,e),merge(e),merge(f),merge(g)].
+
+given #186 (T,wt=5): 268 B_two | C_two | A_two | C_h | C_one.  [resolve(231,f,259,d),merge(f),merge(g),merge(h)].
+
+given #187 (A,wt=6): 233 C_two | A_one | A_two | B_r | B_two | C_h.  [resolve(230,d,102,a)].
+
+given #188 (T,wt=5): 269 C_two | C_one | A_two | C_h | -C_r.  [resolve(261,d,53,a),merge(f),merge(g)].
+
+given #189 (T,wt=4): 273 C_two | C_one | A_two | C_h.  [resolve(269,e,259,d),merge(e),merge(f),merge(g)].
+
+given #190 (T,wt=4): 274 C_two | C_one | A_two | C_b.  [resolve(273,d,260,e),merge(d),merge(e),merge(f)].
+
+given #191 (T,wt=4): 275 C_two | C_one | A_two | -B_b.  [resolve(274,d,35,b)].
+
+given #192 (A,wt=6): 246 B_one | A_one | A_two | -B_b | B_r | B_two.  [resolve(245,d,51,c)].
+
+given #193 (T,wt=5): 277 B_one | A_one | A_two | B_r | B_two.  [resolve(246,d,224,d),merge(f),merge(g),merge(h)].
+
+given #194 (T,wt=5): 278 B_one | A_one | A_two | B_two | -A_r.  [resolve(277,d,29,b)].
+
+given #195 (T,wt=4): 280 B_one | A_one | A_two | B_two.  [resolve(278,e,188,b),merge(e),merge(f),merge(g)].
+
+given #196 (T,wt=4): 281 B_one | A_one | A_two | C_two.  [resolve(280,d,93,a),merge(d)].
+
+given #197 (A,wt=6): 272 C_two | A_one | A_two | B_two | C_h | -A_r.  [resolve(233,d,29,b)].
+
+given #198 (T,wt=5): 282 C_two | A_one | A_two | B_two | C_h.  [resolve(272,f,200,b),merge(f),merge(g),merge(h)].
+
+given #199 (T,wt=4): 283 C_two | A_one | A_two | B_two.  [resolve(282,e,241,d),merge(e),merge(f),merge(g)].
+
+given #200 (T,wt=4): 284 A_one | A_two | B_two | M_C.  [resolve(283,a,79,a),merge(d),merge(e)].
+
+============================== STATISTICS ============================
+
+Given=200. Generated=771. Kept=259. proofs=0.
+Usable=148. Sos=0. Demods=0. Limbo=0, Disabled=185. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=512. Back_subsumed=108.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=3.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=455. Nonunit_bsub_feature_tests=366.
+Megabytes=0.33.
+User_CPU=0.01, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 3465 exit (sos_empty) Mon Dec  2 17:25:31 2024

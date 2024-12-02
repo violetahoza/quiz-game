@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 883 was started by violeta on LAPTOP-J1T1GSAL,
-Sun Dec  1 23:16:11 2024
+Process 3367 was started by violeta on LAPTOP-J1T1GSAL,
+Mon Dec  2 17:04:25 2024
 The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/mace4 -f theorem3_temp.in".
 ============================== end of head ===========================
 
@@ -245,7 +245,7 @@ interpretation( 5, [number=1, seconds=0], [
 
 For domain size 5.
 
-Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
 Ground clauses: seen=271, kept=151.
 Selections=21, assignments=105, propagations=199, current_models=1.
 Rewrite_terms=866, rewrite_bools=554, indexes=0.
@@ -253,9 +253,9 @@ Rules_from_neg_clauses=54, cross_offs=282.
 
 ============================== end of statistics =====================
 
-User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 883 exit (all_models) Sun Dec  1 23:16:11 2024
-The process finished Sun Dec  1 23:16:11 2024
+Process 3367 exit (all_models) Mon Dec  2 17:04:25 2024
+The process finished Mon Dec  2 17:04:25 2024

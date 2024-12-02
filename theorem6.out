@@ -1,0 +1,848 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 3320 was started by violeta on LAPTOP-J1T1GSAL,
+Mon Dec  2 16:57:52 2024
+The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+killer(a) -> -victim(a) & -killer(ah) & -killer(s) & -killer(d) & -killer(ab).
+killer(ah) -> -killer(a) & -victim(ah) & -killer(s) & -killer(d) & -killer(ab).
+killer(s) -> -killer(a) & -killer(ah) & -victim(s) & -killer(d) & -killer(ab).
+killer(d) -> -killer(a) & -killer(ah) & -killer(s) & -victim(d) & -killer(ab).
+killer(ab) -> -killer(a) & -killer(ah) & -killer(s) & -killer(d) & -victim(ab).
+-killer(a) -> killer(ah) | killer(s) | killer(d) | killer(ab).
+-killer(ah) -> killer(a) | killer(s) | killer(d) | killer(ab).
+-killer(s) -> killer(a) | killer(ah) | killer(d) | killer(ab).
+-killer(d) -> killer(a) | killer(ah) | killer(s) | killer(ab).
+-killer(ab) -> killer(a) | killer(ah) | killer(s) | killer(d).
+victim(a) -> -killer(a) & -victim(ah) & -victim(s) & -victim(d) & -victim(ab).
+victim(ah) -> -victim(a) & -killer(ah) & -victim(s) & -victim(d) & -victim(ab).
+victim(s) -> -victim(a) & -victim(ah) & -killer(s) & -victim(d) & -victim(ab).
+victim(d) -> -victim(a) & -victim(ah) & -victim(s) & -killer(d) & -victim(ab).
+victim(ab) -> -victim(a) & -victim(ah) & -victim(s) & -victim(d) & -killer(ab).
+-victim(a) -> victim(ah) | victim(s) | victim(d) | victim(ab).
+-victim(ah) -> victim(a) | victim(s) | victim(d) | victim(ab).
+-victim(s) -> victim(a) | victim(ah) | victim(d) | victim(ab).
+-victim(d) -> victim(a) | victim(ah) | victim(s) | victim(ab).
+-victim(ab) -> victim(a) | victim(ah) | victim(s) | victim(d).
+-killer(a) & -victim(a) -> innocent(a).
+-killer(ah) & -victim(ah) -> innocent(ah).
+-killer(s) & -victim(s) -> innocent(s).
+-killer(d) & -victim(d) -> innocent(d).
+-killer(ab) & -victim(ab) -> innocent(ab).
+innocent(a) -> -killer(a) & -victim(a).
+innocent(ah) -> -killer(ah) & -victim(ah).
+innocent(s) -> -killer(s) & -victim(s).
+innocent(d) -> -killer(d) & -victim(d).
+innocent(ab) -> -killer(ab) & -victim(ab).
+innocent(a) -> killer(ah) | killer(s) | killer(d) | killer(ab).
+innocent(ah) -> killer(a) | killer(s) | killer(d) | killer(ab).
+innocent(s) -> killer(a) | killer(ah) | killer(d) | killer(ab).
+innocent(d) -> killer(a) | killer(ah) | killer(s) | killer(ab).
+innocent(ab) -> killer(a) | killer(ah) | killer(s) | killer(d).
+innocent(a) -> victim(ah) | victim(s) | victim(d) | victim(ab).
+innocent(ah) -> victim(a) | victim(s) | victim(d) | victim(ab).
+innocent(s) -> victim(a) | victim(ah) | victim(d) | victim(ab).
+innocent(d) -> victim(a) | victim(ah) | victim(s) | victim(ab).
+innocent(ab) -> victim(a) | victim(ah) | victim(s) | victim(d).
+killer(a) -> victim(ah) | victim(s) | victim(d) | victim(ab).
+killer(ah) -> victim(a) | victim(s) | victim(d) | victim(ab).
+killer(s) -> victim(a) | victim(ah) | victim(d) | victim(ab).
+killer(d) -> victim(a) | victim(ah) | victim(s) | victim(ab).
+killer(ab) -> victim(a) | victim(ah) | victim(s) | victim(d).
+b1 -> innocent(a) & innocent(ah) | innocent(a) & innocent(s) | innocent(a) & innocent(ab) | innocent(d) & innocent(ah) | innocent(d) & innocent(s) | innocent(d) & innocent(ab).
+b1.
+b2 -> killer(s) & victim(a) | killer(s) & victim(ah) | killer(s) & victim(ab) | killer(d) & victim(a) | killer(d) & victim(ah) | killer(d) & victim(ab) | killer(a) & victim(ah) | killer(a) & victim(ab) | killer(ab) & victim(ah) | killer(ah) & victim(ab).
+b2.
+killer(s) & victim(a) -> innocent(ah) & innocent(d) & innocent(ab).
+killer(s) & victim(ah) -> innocent(a) & innocent(d) & innocent(ab).
+killer(s) & victim(ab) -> innocent(a) & innocent(ah) & innocent(d).
+killer(d) & victim(a) -> innocent(ah) & innocent(s) & innocent(ab).
+killer(d) & victim(ah) -> innocent(a) & innocent(s) & innocent(ab).
+killer(d) & victim(ab) -> innocent(a) & innocent(ah) & innocent(s).
+killer(a) & victim(ah) -> innocent(s) & innocent(d) & innocent(ab).
+killer(a) & victim(ab) -> innocent(ab) & innocent(s) & innocent(d).
+killer(ah) & victim(ab) -> innocent(a) & innocent(s) & innocent(d).
+killer(ab) & victim(ah) -> innocent(a) & innocent(s) & innocent(d).
+b3 -> innocent(d) & killer(s) | innocent(s) & killer(d) | innocent(s) & innocent(d).
+b3.
+b4 -> victim(a) & innocent(ah) | killer(a) & innocent(ah) | innocent(a) & victim(ah) | innocent(a) & killer(ah).
+b4.
+b5 -> victim(a) & innocent(ab) | innocent(a) & victim(ab) | victim(s) & innocent(d) | innocent(s) & victim(d).
+b5.
+b7 -> killer(a) | killer(ah) | killer(ab).
+b7.
+end_of_list.
+
+formulas(goals).
+victim(ab).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 killer(a) -> -victim(a) & -killer(ah) & -killer(s) & -killer(d) & -killer(ab) # label(non_clause).  [assumption].
+2 killer(ah) -> -killer(a) & -victim(ah) & -killer(s) & -killer(d) & -killer(ab) # label(non_clause).  [assumption].
+3 killer(s) -> -killer(a) & -killer(ah) & -victim(s) & -killer(d) & -killer(ab) # label(non_clause).  [assumption].
+4 killer(d) -> -killer(a) & -killer(ah) & -killer(s) & -victim(d) & -killer(ab) # label(non_clause).  [assumption].
+5 killer(ab) -> -killer(a) & -killer(ah) & -killer(s) & -killer(d) & -victim(ab) # label(non_clause).  [assumption].
+6 -killer(a) -> killer(ah) | killer(s) | killer(d) | killer(ab) # label(non_clause).  [assumption].
+7 -killer(ah) -> killer(a) | killer(s) | killer(d) | killer(ab) # label(non_clause).  [assumption].
+8 -killer(s) -> killer(a) | killer(ah) | killer(d) | killer(ab) # label(non_clause).  [assumption].
+9 -killer(d) -> killer(a) | killer(ah) | killer(s) | killer(ab) # label(non_clause).  [assumption].
+10 -killer(ab) -> killer(a) | killer(ah) | killer(s) | killer(d) # label(non_clause).  [assumption].
+11 victim(a) -> -killer(a) & -victim(ah) & -victim(s) & -victim(d) & -victim(ab) # label(non_clause).  [assumption].
+12 victim(ah) -> -victim(a) & -killer(ah) & -victim(s) & -victim(d) & -victim(ab) # label(non_clause).  [assumption].
+13 victim(s) -> -victim(a) & -victim(ah) & -killer(s) & -victim(d) & -victim(ab) # label(non_clause).  [assumption].
+14 victim(d) -> -victim(a) & -victim(ah) & -victim(s) & -killer(d) & -victim(ab) # label(non_clause).  [assumption].
+15 victim(ab) -> -victim(a) & -victim(ah) & -victim(s) & -victim(d) & -killer(ab) # label(non_clause).  [assumption].
+16 -victim(a) -> victim(ah) | victim(s) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+17 -victim(ah) -> victim(a) | victim(s) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+18 -victim(s) -> victim(a) | victim(ah) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+19 -victim(d) -> victim(a) | victim(ah) | victim(s) | victim(ab) # label(non_clause).  [assumption].
+20 -victim(ab) -> victim(a) | victim(ah) | victim(s) | victim(d) # label(non_clause).  [assumption].
+21 -killer(a) & -victim(a) -> innocent(a) # label(non_clause).  [assumption].
+22 -killer(ah) & -victim(ah) -> innocent(ah) # label(non_clause).  [assumption].
+23 -killer(s) & -victim(s) -> innocent(s) # label(non_clause).  [assumption].
+24 -killer(d) & -victim(d) -> innocent(d) # label(non_clause).  [assumption].
+25 -killer(ab) & -victim(ab) -> innocent(ab) # label(non_clause).  [assumption].
+26 innocent(a) -> -killer(a) & -victim(a) # label(non_clause).  [assumption].
+27 innocent(ah) -> -killer(ah) & -victim(ah) # label(non_clause).  [assumption].
+28 innocent(s) -> -killer(s) & -victim(s) # label(non_clause).  [assumption].
+29 innocent(d) -> -killer(d) & -victim(d) # label(non_clause).  [assumption].
+30 innocent(ab) -> -killer(ab) & -victim(ab) # label(non_clause).  [assumption].
+31 innocent(a) -> killer(ah) | killer(s) | killer(d) | killer(ab) # label(non_clause).  [assumption].
+32 innocent(ah) -> killer(a) | killer(s) | killer(d) | killer(ab) # label(non_clause).  [assumption].
+33 innocent(s) -> killer(a) | killer(ah) | killer(d) | killer(ab) # label(non_clause).  [assumption].
+34 innocent(d) -> killer(a) | killer(ah) | killer(s) | killer(ab) # label(non_clause).  [assumption].
+35 innocent(ab) -> killer(a) | killer(ah) | killer(s) | killer(d) # label(non_clause).  [assumption].
+36 innocent(a) -> victim(ah) | victim(s) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+37 innocent(ah) -> victim(a) | victim(s) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+38 innocent(s) -> victim(a) | victim(ah) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+39 innocent(d) -> victim(a) | victim(ah) | victim(s) | victim(ab) # label(non_clause).  [assumption].
+40 innocent(ab) -> victim(a) | victim(ah) | victim(s) | victim(d) # label(non_clause).  [assumption].
+41 killer(a) -> victim(ah) | victim(s) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+42 killer(ah) -> victim(a) | victim(s) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+43 killer(s) -> victim(a) | victim(ah) | victim(d) | victim(ab) # label(non_clause).  [assumption].
+44 killer(d) -> victim(a) | victim(ah) | victim(s) | victim(ab) # label(non_clause).  [assumption].
+45 killer(ab) -> victim(a) | victim(ah) | victim(s) | victim(d) # label(non_clause).  [assumption].
+46 b1 -> innocent(a) & innocent(ah) | innocent(a) & innocent(s) | innocent(a) & innocent(ab) | innocent(d) & innocent(ah) | innocent(d) & innocent(s) | innocent(d) & innocent(ab) # label(non_clause).  [assumption].
+47 b2 -> killer(s) & victim(a) | killer(s) & victim(ah) | killer(s) & victim(ab) | killer(d) & victim(a) | killer(d) & victim(ah) | killer(d) & victim(ab) | killer(a) & victim(ah) | killer(a) & victim(ab) | killer(ab) & victim(ah) | killer(ah) & victim(ab) # label(non_clause).  [assumption].
+48 killer(s) & victim(a) -> innocent(ah) & innocent(d) & innocent(ab) # label(non_clause).  [assumption].
+49 killer(s) & victim(ah) -> innocent(a) & innocent(d) & innocent(ab) # label(non_clause).  [assumption].
+50 killer(s) & victim(ab) -> innocent(a) & innocent(ah) & innocent(d) # label(non_clause).  [assumption].
+51 killer(d) & victim(a) -> innocent(ah) & innocent(s) & innocent(ab) # label(non_clause).  [assumption].
+52 killer(d) & victim(ah) -> innocent(a) & innocent(s) & innocent(ab) # label(non_clause).  [assumption].
+53 killer(d) & victim(ab) -> innocent(a) & innocent(ah) & innocent(s) # label(non_clause).  [assumption].
+54 killer(a) & victim(ah) -> innocent(s) & innocent(d) & innocent(ab) # label(non_clause).  [assumption].
+55 killer(a) & victim(ab) -> innocent(ab) & innocent(s) & innocent(d) # label(non_clause).  [assumption].
+56 killer(ah) & victim(ab) -> innocent(a) & innocent(s) & innocent(d) # label(non_clause).  [assumption].
+57 killer(ab) & victim(ah) -> innocent(a) & innocent(s) & innocent(d) # label(non_clause).  [assumption].
+58 b3 -> innocent(d) & killer(s) | innocent(s) & killer(d) | innocent(s) & innocent(d) # label(non_clause).  [assumption].
+59 b4 -> victim(a) & innocent(ah) | killer(a) & innocent(ah) | innocent(a) & victim(ah) | innocent(a) & killer(ah) # label(non_clause).  [assumption].
+60 b5 -> victim(a) & innocent(ab) | innocent(a) & victim(ab) | victim(s) & innocent(d) | innocent(s) & victim(d) # label(non_clause).  [assumption].
+61 b7 -> killer(a) | killer(ah) | killer(ab) # label(non_clause).  [assumption].
+62 victim(ab) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-killer(a) | -victim(a).  [clausify(1)].
+-killer(a) | -killer(ah).  [clausify(1)].
+-killer(a) | -killer(s).  [clausify(1)].
+-killer(a) | -killer(d).  [clausify(1)].
+-killer(a) | -killer(ab).  [clausify(1)].
+-killer(ah) | -killer(a).  [clausify(2)].
+-killer(ah) | -victim(ah).  [clausify(2)].
+-killer(ah) | -killer(s).  [clausify(2)].
+-killer(ah) | -killer(d).  [clausify(2)].
+-killer(ah) | -killer(ab).  [clausify(2)].
+-killer(s) | -killer(a).  [clausify(3)].
+-killer(s) | -killer(ah).  [clausify(3)].
+-killer(s) | -victim(s).  [clausify(3)].
+-killer(s) | -killer(d).  [clausify(3)].
+-killer(s) | -killer(ab).  [clausify(3)].
+-killer(d) | -killer(a).  [clausify(4)].
+-killer(d) | -killer(ah).  [clausify(4)].
+-killer(d) | -killer(s).  [clausify(4)].
+-killer(d) | -victim(d).  [clausify(4)].
+-killer(d) | -killer(ab).  [clausify(4)].
+-killer(ab) | -killer(a).  [clausify(5)].
+-killer(ab) | -killer(ah).  [clausify(5)].
+-killer(ab) | -killer(s).  [clausify(5)].
+-killer(ab) | -killer(d).  [clausify(5)].
+-killer(ab) | -victim(ab).  [clausify(5)].
+killer(a) | killer(ah) | killer(s) | killer(d) | killer(ab).  [clausify(6)].
+killer(ah) | killer(a) | killer(s) | killer(d) | killer(ab).  [clausify(7)].
+killer(s) | killer(a) | killer(ah) | killer(d) | killer(ab).  [clausify(8)].
+killer(d) | killer(a) | killer(ah) | killer(s) | killer(ab).  [clausify(9)].
+killer(ab) | killer(a) | killer(ah) | killer(s) | killer(d).  [clausify(10)].
+-victim(a) | -killer(a).  [clausify(11)].
+-victim(a) | -victim(ah).  [clausify(11)].
+-victim(a) | -victim(s).  [clausify(11)].
+-victim(a) | -victim(d).  [clausify(11)].
+-victim(a) | -victim(ab).  [clausify(11)].
+-victim(ah) | -victim(a).  [clausify(12)].
+-victim(ah) | -killer(ah).  [clausify(12)].
+-victim(ah) | -victim(s).  [clausify(12)].
+-victim(ah) | -victim(d).  [clausify(12)].
+-victim(ah) | -victim(ab).  [clausify(12)].
+-victim(s) | -victim(a).  [clausify(13)].
+-victim(s) | -victim(ah).  [clausify(13)].
+-victim(s) | -killer(s).  [clausify(13)].
+-victim(s) | -victim(d).  [clausify(13)].
+-victim(s) | -victim(ab).  [clausify(13)].
+-victim(d) | -victim(a).  [clausify(14)].
+-victim(d) | -victim(ah).  [clausify(14)].
+-victim(d) | -victim(s).  [clausify(14)].
+-victim(d) | -killer(d).  [clausify(14)].
+-victim(d) | -victim(ab).  [clausify(14)].
+-victim(ab) | -victim(a).  [clausify(15)].
+-victim(ab) | -victim(ah).  [clausify(15)].
+-victim(ab) | -victim(s).  [clausify(15)].
+-victim(ab) | -victim(d).  [clausify(15)].
+-victim(ab) | -killer(ab).  [clausify(15)].
+victim(a) | victim(ah) | victim(s) | victim(d) | victim(ab).  [clausify(16)].
+victim(ah) | victim(a) | victim(s) | victim(d) | victim(ab).  [clausify(17)].
+victim(s) | victim(a) | victim(ah) | victim(d) | victim(ab).  [clausify(18)].
+victim(d) | victim(a) | victim(ah) | victim(s) | victim(ab).  [clausify(19)].
+victim(ab) | victim(a) | victim(ah) | victim(s) | victim(d).  [clausify(20)].
+killer(a) | victim(a) | innocent(a).  [clausify(21)].
+killer(ah) | victim(ah) | innocent(ah).  [clausify(22)].
+killer(s) | victim(s) | innocent(s).  [clausify(23)].
+killer(d) | victim(d) | innocent(d).  [clausify(24)].
+killer(ab) | victim(ab) | innocent(ab).  [clausify(25)].
+-innocent(a) | -killer(a).  [clausify(26)].
+-innocent(a) | -victim(a).  [clausify(26)].
+-innocent(ah) | -killer(ah).  [clausify(27)].
+-innocent(ah) | -victim(ah).  [clausify(27)].
+-innocent(s) | -killer(s).  [clausify(28)].
+-innocent(s) | -victim(s).  [clausify(28)].
+-innocent(d) | -killer(d).  [clausify(29)].
+-innocent(d) | -victim(d).  [clausify(29)].
+-innocent(ab) | -killer(ab).  [clausify(30)].
+-innocent(ab) | -victim(ab).  [clausify(30)].
+-innocent(a) | killer(ah) | killer(s) | killer(d) | killer(ab).  [clausify(31)].
+-innocent(ah) | killer(a) | killer(s) | killer(d) | killer(ab).  [clausify(32)].
+-innocent(s) | killer(a) | killer(ah) | killer(d) | killer(ab).  [clausify(33)].
+-innocent(d) | killer(a) | killer(ah) | killer(s) | killer(ab).  [clausify(34)].
+-innocent(ab) | killer(a) | killer(ah) | killer(s) | killer(d).  [clausify(35)].
+-innocent(a) | victim(ah) | victim(s) | victim(d) | victim(ab).  [clausify(36)].
+-innocent(ah) | victim(a) | victim(s) | victim(d) | victim(ab).  [clausify(37)].
+-innocent(s) | victim(a) | victim(ah) | victim(d) | victim(ab).  [clausify(38)].
+-innocent(d) | victim(a) | victim(ah) | victim(s) | victim(ab).  [clausify(39)].
+-innocent(ab) | victim(a) | victim(ah) | victim(s) | victim(d).  [clausify(40)].
+-killer(a) | victim(ah) | victim(s) | victim(d) | victim(ab).  [clausify(41)].
+-killer(ah) | victim(a) | victim(s) | victim(d) | victim(ab).  [clausify(42)].
+-killer(s) | victim(a) | victim(ah) | victim(d) | victim(ab).  [clausify(43)].
+-killer(d) | victim(a) | victim(ah) | victim(s) | victim(ab).  [clausify(44)].
+-killer(ab) | victim(a) | victim(ah) | victim(s) | victim(d).  [clausify(45)].
+-b1 | innocent(a) | innocent(d).  [clausify(46)].
+-b1 | innocent(ah) | innocent(s) | innocent(ab).  [clausify(46)].
+b1.  [assumption].
+-b2 | killer(s) | killer(d) | killer(a) | killer(ab) | killer(ah).  [clausify(47)].
+-b2 | killer(s) | killer(d) | killer(a) | victim(ah) | killer(ah).  [clausify(47)].
+-b2 | killer(s) | killer(d) | victim(ab) | killer(a) | killer(ab).  [clausify(47)].
+-b2 | killer(s) | killer(d) | victim(ab) | victim(ah).  [clausify(47)].
+-b2 | victim(a) | victim(ah) | victim(ab).  [clausify(47)].
+b2.  [assumption].
+-killer(s) | -victim(a) | innocent(ah).  [clausify(48)].
+-killer(s) | -victim(a) | innocent(d).  [clausify(48)].
+-killer(s) | -victim(a) | innocent(ab).  [clausify(48)].
+-killer(s) | -victim(ah) | innocent(a).  [clausify(49)].
+-killer(s) | -victim(ah) | innocent(d).  [clausify(49)].
+-killer(s) | -victim(ah) | innocent(ab).  [clausify(49)].
+-killer(s) | -victim(ab) | innocent(a).  [clausify(50)].
+-killer(s) | -victim(ab) | innocent(ah).  [clausify(50)].
+-killer(s) | -victim(ab) | innocent(d).  [clausify(50)].
+-killer(d) | -victim(a) | innocent(ah).  [clausify(51)].
+-killer(d) | -victim(a) | innocent(s).  [clausify(51)].
+-killer(d) | -victim(a) | innocent(ab).  [clausify(51)].
+-killer(d) | -victim(ah) | innocent(a).  [clausify(52)].
+-killer(d) | -victim(ah) | innocent(s).  [clausify(52)].
+-killer(d) | -victim(ah) | innocent(ab).  [clausify(52)].
+-killer(d) | -victim(ab) | innocent(a).  [clausify(53)].
+-killer(d) | -victim(ab) | innocent(ah).  [clausify(53)].
+-killer(d) | -victim(ab) | innocent(s).  [clausify(53)].
+-killer(a) | -victim(ah) | innocent(s).  [clausify(54)].
+-killer(a) | -victim(ah) | innocent(d).  [clausify(54)].
+-killer(a) | -victim(ah) | innocent(ab).  [clausify(54)].
+-killer(a) | -victim(ab) | innocent(ab).  [clausify(55)].
+-killer(a) | -victim(ab) | innocent(s).  [clausify(55)].
+-killer(a) | -victim(ab) | innocent(d).  [clausify(55)].
+-killer(ah) | -victim(ab) | innocent(a).  [clausify(56)].
+-killer(ah) | -victim(ab) | innocent(s).  [clausify(56)].
+-killer(ah) | -victim(ab) | innocent(d).  [clausify(56)].
+-killer(ab) | -victim(ah) | innocent(a).  [clausify(57)].
+-killer(ab) | -victim(ah) | innocent(s).  [clausify(57)].
+-killer(ab) | -victim(ah) | innocent(d).  [clausify(57)].
+-b3 | innocent(d) | innocent(s).  [clausify(58)].
+-b3 | innocent(d) | killer(d).  [clausify(58)].
+-b3 | killer(s) | innocent(s).  [clausify(58)].
+b3.  [assumption].
+-b4 | victim(a) | killer(a) | innocent(a).  [clausify(59)].
+-b4 | victim(a) | killer(a) | victim(ah) | killer(ah).  [clausify(59)].
+-b4 | innocent(ah) | innocent(a).  [clausify(59)].
+-b4 | innocent(ah) | victim(ah) | killer(ah).  [clausify(59)].
+b4.  [assumption].
+-b5 | victim(a) | innocent(a) | victim(s) | innocent(s).  [clausify(60)].
+-b5 | victim(a) | innocent(a) | victim(s) | victim(d).  [clausify(60)].
+-b5 | victim(a) | innocent(a) | innocent(d) | innocent(s).  [clausify(60)].
+-b5 | victim(a) | innocent(a) | innocent(d) | victim(d).  [clausify(60)].
+-b5 | victim(a) | victim(ab) | victim(s) | innocent(s).  [clausify(60)].
+-b5 | victim(a) | victim(ab) | victim(s) | victim(d).  [clausify(60)].
+-b5 | victim(a) | victim(ab) | innocent(d) | innocent(s).  [clausify(60)].
+-b5 | victim(a) | victim(ab) | innocent(d) | victim(d).  [clausify(60)].
+-b5 | innocent(ab) | innocent(a) | victim(s) | innocent(s).  [clausify(60)].
+-b5 | innocent(ab) | innocent(a) | victim(s) | victim(d).  [clausify(60)].
+-b5 | innocent(ab) | innocent(a) | innocent(d) | innocent(s).  [clausify(60)].
+-b5 | innocent(ab) | innocent(a) | innocent(d) | victim(d).  [clausify(60)].
+-b5 | innocent(ab) | victim(ab) | victim(s) | innocent(s).  [clausify(60)].
+-b5 | innocent(ab) | victim(ab) | victim(s) | victim(d).  [clausify(60)].
+-b5 | innocent(ab) | victim(ab) | innocent(d) | innocent(s).  [clausify(60)].
+-b5 | innocent(ab) | victim(ab) | innocent(d) | victim(d).  [clausify(60)].
+b5.  [assumption].
+-b7 | killer(a) | killer(ah) | killer(ab).  [clausify(61)].
+b7.  [assumption].
+-victim(ab).  [deny(62)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ b5, b2, b4, b3, b1, b7, victim, killer, innocent ]).
+Function symbol precedence:  function_order([ a, ab, d, s, ah ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      63 -killer(a) | -victim(a).  [clausify(1)].
+kept:      64 -killer(a) | -killer(ah).  [clausify(1)].
+kept:      65 -killer(a) | -killer(s).  [clausify(1)].
+kept:      66 -killer(a) | -killer(d).  [clausify(1)].
+kept:      67 -killer(a) | -killer(ab).  [clausify(1)].
+kept:      68 -killer(ah) | -victim(ah).  [clausify(2)].
+kept:      69 -killer(ah) | -killer(s).  [clausify(2)].
+kept:      70 -killer(ah) | -killer(d).  [clausify(2)].
+kept:      71 -killer(ah) | -killer(ab).  [clausify(2)].
+kept:      72 -killer(s) | -victim(s).  [clausify(3)].
+kept:      73 -killer(s) | -killer(d).  [clausify(3)].
+kept:      74 -killer(s) | -killer(ab).  [clausify(3)].
+kept:      75 -killer(d) | -victim(d).  [clausify(4)].
+kept:      76 -killer(d) | -killer(ab).  [clausify(4)].
+kept:      77 -killer(ab) | -victim(ab).  [clausify(5)].
+kept:      78 killer(a) | killer(ah) | killer(s) | killer(d) | killer(ab).  [clausify(6)].
+kept:      79 -victim(a) | -victim(ah).  [clausify(11)].
+kept:      80 -victim(a) | -victim(s).  [clausify(11)].
+kept:      81 -victim(a) | -victim(d).  [clausify(11)].
+kept:      82 -victim(a) | -victim(ab).  [clausify(11)].
+kept:      83 -victim(ah) | -victim(s).  [clausify(12)].
+kept:      84 -victim(ah) | -victim(d).  [clausify(12)].
+kept:      85 -victim(ah) | -victim(ab).  [clausify(12)].
+kept:      86 -victim(s) | -victim(d).  [clausify(13)].
+kept:      87 -victim(s) | -victim(ab).  [clausify(13)].
+kept:      88 -victim(d) | -victim(ab).  [clausify(14)].
+kept:      89 victim(a) | victim(ah) | victim(s) | victim(d) | victim(ab).  [clausify(16)].
+kept:      90 killer(a) | victim(a) | innocent(a).  [clausify(21)].
+kept:      91 killer(ah) | victim(ah) | innocent(ah).  [clausify(22)].
+kept:      92 killer(s) | victim(s) | innocent(s).  [clausify(23)].
+kept:      93 killer(d) | victim(d) | innocent(d).  [clausify(24)].
+kept:      94 killer(ab) | victim(ab) | innocent(ab).  [clausify(25)].
+kept:      95 -innocent(a) | -killer(a).  [clausify(26)].
+kept:      96 -innocent(a) | -victim(a).  [clausify(26)].
+kept:      97 -innocent(ah) | -killer(ah).  [clausify(27)].
+kept:      98 -innocent(ah) | -victim(ah).  [clausify(27)].
+kept:      99 -innocent(s) | -killer(s).  [clausify(28)].
+kept:      100 -innocent(s) | -victim(s).  [clausify(28)].
+kept:      101 -innocent(d) | -killer(d).  [clausify(29)].
+kept:      102 -innocent(d) | -victim(d).  [clausify(29)].
+kept:      103 -innocent(ab) | -killer(ab).  [clausify(30)].
+kept:      104 -innocent(ab) | -victim(ab).  [clausify(30)].
+kept:      105 -innocent(a) | killer(ah) | killer(s) | killer(d) | killer(ab).  [clausify(31)].
+kept:      106 -innocent(ah) | killer(a) | killer(s) | killer(d) | killer(ab).  [clausify(32)].
+kept:      107 -innocent(s) | killer(a) | killer(ah) | killer(d) | killer(ab).  [clausify(33)].
+kept:      108 -innocent(d) | killer(a) | killer(ah) | killer(s) | killer(ab).  [clausify(34)].
+kept:      109 -innocent(ab) | killer(a) | killer(ah) | killer(s) | killer(d).  [clausify(35)].
+kept:      110 -innocent(a) | victim(ah) | victim(s) | victim(d) | victim(ab).  [clausify(36)].
+kept:      111 -innocent(ah) | victim(a) | victim(s) | victim(d) | victim(ab).  [clausify(37)].
+kept:      112 -innocent(s) | victim(a) | victim(ah) | victim(d) | victim(ab).  [clausify(38)].
+kept:      113 -innocent(d) | victim(a) | victim(ah) | victim(s) | victim(ab).  [clausify(39)].
+kept:      114 -innocent(ab) | victim(a) | victim(ah) | victim(s) | victim(d).  [clausify(40)].
+kept:      115 -killer(a) | victim(ah) | victim(s) | victim(d) | victim(ab).  [clausify(41)].
+kept:      116 -killer(ah) | victim(a) | victim(s) | victim(d) | victim(ab).  [clausify(42)].
+kept:      117 -killer(s) | victim(a) | victim(ah) | victim(d) | victim(ab).  [clausify(43)].
+kept:      118 -killer(d) | victim(a) | victim(ah) | victim(s) | victim(ab).  [clausify(44)].
+kept:      119 -killer(ab) | victim(a) | victim(ah) | victim(s) | victim(d).  [clausify(45)].
+kept:      120 -b1 | innocent(a) | innocent(d).  [clausify(46)].
+kept:      121 -b1 | innocent(ah) | innocent(s) | innocent(ab).  [clausify(46)].
+kept:      122 b1.  [assumption].
+kept:      123 -b2 | killer(s) | killer(d) | killer(a) | victim(ah) | killer(ah).  [clausify(47)].
+kept:      124 -b2 | killer(s) | killer(d) | victim(ab) | killer(a) | killer(ab).  [clausify(47)].
+kept:      125 -b2 | killer(s) | killer(d) | victim(ab) | victim(ah).  [clausify(47)].
+kept:      126 -b2 | victim(a) | victim(ah) | victim(ab).  [clausify(47)].
+kept:      127 b2.  [assumption].
+kept:      128 -killer(s) | -victim(a) | innocent(ah).  [clausify(48)].
+kept:      129 -killer(s) | -victim(a) | innocent(d).  [clausify(48)].
+kept:      130 -killer(s) | -victim(a) | innocent(ab).  [clausify(48)].
+kept:      131 -killer(s) | -victim(ah) | innocent(a).  [clausify(49)].
+kept:      132 -killer(s) | -victim(ah) | innocent(d).  [clausify(49)].
+kept:      133 -killer(s) | -victim(ah) | innocent(ab).  [clausify(49)].
+kept:      134 -killer(s) | -victim(ab) | innocent(a).  [clausify(50)].
+kept:      135 -killer(s) | -victim(ab) | innocent(ah).  [clausify(50)].
+kept:      136 -killer(s) | -victim(ab) | innocent(d).  [clausify(50)].
+kept:      137 -killer(d) | -victim(a) | innocent(ah).  [clausify(51)].
+kept:      138 -killer(d) | -victim(a) | innocent(s).  [clausify(51)].
+kept:      139 -killer(d) | -victim(a) | innocent(ab).  [clausify(51)].
+kept:      140 -killer(d) | -victim(ah) | innocent(a).  [clausify(52)].
+kept:      141 -killer(d) | -victim(ah) | innocent(s).  [clausify(52)].
+kept:      142 -killer(d) | -victim(ah) | innocent(ab).  [clausify(52)].
+kept:      143 -killer(d) | -victim(ab) | innocent(a).  [clausify(53)].
+kept:      144 -killer(d) | -victim(ab) | innocent(ah).  [clausify(53)].
+kept:      145 -killer(d) | -victim(ab) | innocent(s).  [clausify(53)].
+kept:      146 -killer(a) | -victim(ah) | innocent(s).  [clausify(54)].
+kept:      147 -killer(a) | -victim(ah) | innocent(d).  [clausify(54)].
+kept:      148 -killer(a) | -victim(ah) | innocent(ab).  [clausify(54)].
+kept:      149 -killer(a) | -victim(ab) | innocent(ab).  [clausify(55)].
+kept:      150 -killer(a) | -victim(ab) | innocent(s).  [clausify(55)].
+kept:      151 -killer(a) | -victim(ab) | innocent(d).  [clausify(55)].
+kept:      152 -killer(ah) | -victim(ab) | innocent(a).  [clausify(56)].
+kept:      153 -killer(ah) | -victim(ab) | innocent(s).  [clausify(56)].
+kept:      154 -killer(ah) | -victim(ab) | innocent(d).  [clausify(56)].
+kept:      155 -killer(ab) | -victim(ah) | innocent(a).  [clausify(57)].
+kept:      156 -killer(ab) | -victim(ah) | innocent(s).  [clausify(57)].
+kept:      157 -killer(ab) | -victim(ah) | innocent(d).  [clausify(57)].
+kept:      158 -b3 | innocent(d) | innocent(s).  [clausify(58)].
+kept:      159 -b3 | innocent(d) | killer(d).  [clausify(58)].
+kept:      160 -b3 | killer(s) | innocent(s).  [clausify(58)].
+kept:      161 b3.  [assumption].
+kept:      162 -b4 | victim(a) | killer(a) | victim(ah) | killer(ah).  [clausify(59)].
+kept:      163 -b4 | innocent(ah) | innocent(a).  [clausify(59)].
+kept:      164 b4.  [assumption].
+kept:      165 -b5 | victim(a) | innocent(a) | victim(s) | innocent(s).  [clausify(60)].
+kept:      166 -b5 | victim(a) | innocent(a) | victim(s) | victim(d).  [clausify(60)].
+kept:      167 -b5 | victim(a) | innocent(a) | innocent(d) | innocent(s).  [clausify(60)].
+kept:      168 -b5 | victim(a) | innocent(a) | innocent(d) | victim(d).  [clausify(60)].
+kept:      169 -b5 | victim(a) | victim(ab) | victim(s) | innocent(s).  [clausify(60)].
+kept:      170 -b5 | victim(a) | victim(ab) | victim(s) | victim(d).  [clausify(60)].
+kept:      171 -b5 | victim(a) | victim(ab) | innocent(d) | innocent(s).  [clausify(60)].
+kept:      172 -b5 | victim(a) | victim(ab) | innocent(d) | victim(d).  [clausify(60)].
+kept:      173 -b5 | innocent(ab) | innocent(a) | victim(s) | innocent(s).  [clausify(60)].
+kept:      174 -b5 | innocent(ab) | innocent(a) | victim(s) | victim(d).  [clausify(60)].
+kept:      175 -b5 | innocent(ab) | innocent(a) | innocent(d) | innocent(s).  [clausify(60)].
+kept:      176 -b5 | innocent(ab) | innocent(a) | innocent(d) | victim(d).  [clausify(60)].
+kept:      177 -b5 | innocent(ab) | victim(ab) | victim(s) | innocent(s).  [clausify(60)].
+kept:      178 -b5 | innocent(ab) | victim(ab) | victim(s) | victim(d).  [clausify(60)].
+kept:      179 -b5 | innocent(ab) | victim(ab) | innocent(d) | innocent(s).  [clausify(60)].
+kept:      180 -b5 | innocent(ab) | victim(ab) | innocent(d) | victim(d).  [clausify(60)].
+kept:      181 b5.  [assumption].
+kept:      182 -b7 | killer(a) | killer(ah) | killer(ab).  [clausify(61)].
+kept:      183 b7.  [assumption].
+kept:      184 -victim(ab).  [deny(62)].
+kept:      185 innocent(ah) | innocent(s) | innocent(ab).  [back_unit_del(121),unit_del(a,122)].
+kept:      186 innocent(a) | innocent(d).  [back_unit_del(120),unit_del(a,122)].
+kept:      187 victim(a) | victim(ah).  [back_unit_del(126),unit_del(a,127),unit_del(d,184)].
+kept:      188 killer(s) | killer(d) | victim(ah).  [back_unit_del(125),unit_del(a,127),unit_del(d,184)].
+kept:      189 killer(s) | killer(d) | killer(a) | killer(ab).  [back_unit_del(124),unit_del(a,127),unit_del(d,184)].
+kept:      190 killer(s) | innocent(s).  [back_unit_del(160),unit_del(a,161)].
+kept:      191 innocent(d) | killer(d).  [back_unit_del(159),unit_del(a,161)].
+kept:      192 innocent(d) | innocent(s).  [back_unit_del(158),unit_del(a,161)].
+kept:      193 innocent(ah) | innocent(a).  [back_unit_del(163),unit_del(a,164)].
+kept:      194 innocent(ab) | innocent(d) | victim(d).  [back_unit_del(180),unit_del(a,181),unit_del(c,184)].
+kept:      195 innocent(ab) | victim(s) | victim(d).  [back_unit_del(178),unit_del(a,181),unit_del(c,184)].
+kept:      196 innocent(ab) | victim(s) | innocent(s).  [back_unit_del(177),unit_del(a,181),unit_del(c,184)].
+kept:      197 victim(a) | innocent(d) | victim(d).  [back_unit_del(172),unit_del(a,181),unit_del(c,184)].
+kept:      198 victim(a) | victim(s) | victim(d).  [back_unit_del(170),unit_del(a,181),unit_del(c,184)].
+kept:      199 victim(a) | victim(s) | innocent(s).  [back_unit_del(169),unit_del(a,181),unit_del(c,184)].
+kept:      200 killer(a) | killer(ah) | killer(ab).  [back_unit_del(182),unit_del(a,183)].
+kept:      201 -killer(a) | victim(ah) | victim(s) | victim(d).  [back_unit_del(115),unit_del(e,184)].
+kept:      202 -innocent(a) | victim(ah) | victim(s) | victim(d).  [back_unit_del(110),unit_del(e,184)].
+kept:      203 killer(ab) | innocent(ab).  [back_unit_del(94),unit_del(b,184)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+63 -killer(a) | -victim(a).  [clausify(1)].
+64 -killer(a) | -killer(ah).  [clausify(1)].
+65 -killer(a) | -killer(s).  [clausify(1)].
+66 -killer(a) | -killer(d).  [clausify(1)].
+67 -killer(a) | -killer(ab).  [clausify(1)].
+68 -killer(ah) | -victim(ah).  [clausify(2)].
+69 -killer(ah) | -killer(s).  [clausify(2)].
+70 -killer(ah) | -killer(d).  [clausify(2)].
+71 -killer(ah) | -killer(ab).  [clausify(2)].
+72 -killer(s) | -victim(s).  [clausify(3)].
+73 -killer(s) | -killer(d).  [clausify(3)].
+74 -killer(s) | -killer(ab).  [clausify(3)].
+75 -killer(d) | -victim(d).  [clausify(4)].
+76 -killer(d) | -killer(ab).  [clausify(4)].
+79 -victim(a) | -victim(ah).  [clausify(11)].
+80 -victim(a) | -victim(s).  [clausify(11)].
+81 -victim(a) | -victim(d).  [clausify(11)].
+83 -victim(ah) | -victim(s).  [clausify(12)].
+84 -victim(ah) | -victim(d).  [clausify(12)].
+86 -victim(s) | -victim(d).  [clausify(13)].
+90 killer(a) | victim(a) | innocent(a).  [clausify(21)].
+91 killer(ah) | victim(ah) | innocent(ah).  [clausify(22)].
+95 -innocent(a) | -killer(a).  [clausify(26)].
+96 -innocent(a) | -victim(a).  [clausify(26)].
+97 -innocent(ah) | -killer(ah).  [clausify(27)].
+98 -innocent(ah) | -victim(ah).  [clausify(27)].
+99 -innocent(s) | -killer(s).  [clausify(28)].
+100 -innocent(s) | -victim(s).  [clausify(28)].
+101 -innocent(d) | -killer(d).  [clausify(29)].
+102 -innocent(d) | -victim(d).  [clausify(29)].
+103 -innocent(ab) | -killer(ab).  [clausify(30)].
+105 -innocent(a) | killer(ah) | killer(s) | killer(d) | killer(ab).  [clausify(31)].
+109 -innocent(ab) | killer(a) | killer(ah) | killer(s) | killer(d).  [clausify(35)].
+122 b1.  [assumption].
+127 b2.  [assumption].
+128 -killer(s) | -victim(a) | innocent(ah).  [clausify(48)].
+129 -killer(s) | -victim(a) | innocent(d).  [clausify(48)].
+130 -killer(s) | -victim(a) | innocent(ab).  [clausify(48)].
+131 -killer(s) | -victim(ah) | innocent(a).  [clausify(49)].
+132 -killer(s) | -victim(ah) | innocent(d).  [clausify(49)].
+133 -killer(s) | -victim(ah) | innocent(ab).  [clausify(49)].
+137 -killer(d) | -victim(a) | innocent(ah).  [clausify(51)].
+138 -killer(d) | -victim(a) | innocent(s).  [clausify(51)].
+139 -killer(d) | -victim(a) | innocent(ab).  [clausify(51)].
+140 -killer(d) | -victim(ah) | innocent(a).  [clausify(52)].
+141 -killer(d) | -victim(ah) | innocent(s).  [clausify(52)].
+142 -killer(d) | -victim(ah) | innocent(ab).  [clausify(52)].
+146 -killer(a) | -victim(ah) | innocent(s).  [clausify(54)].
+147 -killer(a) | -victim(ah) | innocent(d).  [clausify(54)].
+148 -killer(a) | -victim(ah) | innocent(ab).  [clausify(54)].
+155 -killer(ab) | -victim(ah) | innocent(a).  [clausify(57)].
+156 -killer(ab) | -victim(ah) | innocent(s).  [clausify(57)].
+157 -killer(ab) | -victim(ah) | innocent(d).  [clausify(57)].
+161 b3.  [assumption].
+164 b4.  [assumption].
+181 b5.  [assumption].
+183 b7.  [assumption].
+184 -victim(ab).  [deny(62)].
+185 innocent(ah) | innocent(s) | innocent(ab).  [back_unit_del(121),unit_del(a,122)].
+186 innocent(a) | innocent(d).  [back_unit_del(120),unit_del(a,122)].
+187 victim(a) | victim(ah).  [back_unit_del(126),unit_del(a,127),unit_del(d,184)].
+188 killer(s) | killer(d) | victim(ah).  [back_unit_del(125),unit_del(a,127),unit_del(d,184)].
+189 killer(s) | killer(d) | killer(a) | killer(ab).  [back_unit_del(124),unit_del(a,127),unit_del(d,184)].
+190 killer(s) | innocent(s).  [back_unit_del(160),unit_del(a,161)].
+191 innocent(d) | killer(d).  [back_unit_del(159),unit_del(a,161)].
+192 innocent(d) | innocent(s).  [back_unit_del(158),unit_del(a,161)].
+193 innocent(ah) | innocent(a).  [back_unit_del(163),unit_del(a,164)].
+194 innocent(ab) | innocent(d) | victim(d).  [back_unit_del(180),unit_del(a,181),unit_del(c,184)].
+195 innocent(ab) | victim(s) | victim(d).  [back_unit_del(178),unit_del(a,181),unit_del(c,184)].
+196 innocent(ab) | victim(s) | innocent(s).  [back_unit_del(177),unit_del(a,181),unit_del(c,184)].
+197 victim(a) | innocent(d) | victim(d).  [back_unit_del(172),unit_del(a,181),unit_del(c,184)].
+198 victim(a) | victim(s) | victim(d).  [back_unit_del(170),unit_del(a,181),unit_del(c,184)].
+199 victim(a) | victim(s) | innocent(s).  [back_unit_del(169),unit_del(a,181),unit_del(c,184)].
+200 killer(a) | killer(ah) | killer(ab).  [back_unit_del(182),unit_del(a,183)].
+201 -killer(a) | victim(ah) | victim(s) | victim(d).  [back_unit_del(115),unit_del(e,184)].
+202 -innocent(a) | victim(ah) | victim(s) | victim(d).  [back_unit_del(110),unit_del(e,184)].
+203 killer(ab) | innocent(ab).  [back_unit_del(94),unit_del(b,184)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.02 seconds.
+
+given #1 (I,wt=4): 63 -killer(a) | -victim(a).  [clausify(1)].
+
+given #2 (I,wt=4): 64 -killer(a) | -killer(ah).  [clausify(1)].
+
+given #3 (I,wt=4): 65 -killer(a) | -killer(s).  [clausify(1)].
+
+given #4 (I,wt=4): 66 -killer(a) | -killer(d).  [clausify(1)].
+
+given #5 (I,wt=4): 67 -killer(a) | -killer(ab).  [clausify(1)].
+
+given #6 (I,wt=4): 68 -killer(ah) | -victim(ah).  [clausify(2)].
+
+given #7 (I,wt=4): 69 -killer(ah) | -killer(s).  [clausify(2)].
+
+given #8 (I,wt=4): 70 -killer(ah) | -killer(d).  [clausify(2)].
+
+given #9 (I,wt=4): 71 -killer(ah) | -killer(ab).  [clausify(2)].
+
+given #10 (I,wt=4): 72 -killer(s) | -victim(s).  [clausify(3)].
+
+given #11 (I,wt=4): 73 -killer(s) | -killer(d).  [clausify(3)].
+
+given #12 (I,wt=4): 74 -killer(s) | -killer(ab).  [clausify(3)].
+
+given #13 (I,wt=4): 75 -killer(d) | -victim(d).  [clausify(4)].
+
+given #14 (I,wt=4): 76 -killer(d) | -killer(ab).  [clausify(4)].
+
+given #15 (I,wt=4): 79 -victim(a) | -victim(ah).  [clausify(11)].
+
+given #16 (I,wt=4): 80 -victim(a) | -victim(s).  [clausify(11)].
+
+given #17 (I,wt=4): 81 -victim(a) | -victim(d).  [clausify(11)].
+
+given #18 (I,wt=4): 83 -victim(ah) | -victim(s).  [clausify(12)].
+
+given #19 (I,wt=4): 84 -victim(ah) | -victim(d).  [clausify(12)].
+
+given #20 (I,wt=4): 86 -victim(s) | -victim(d).  [clausify(13)].
+
+given #21 (I,wt=6): 90 killer(a) | victim(a) | innocent(a).  [clausify(21)].
+
+given #22 (I,wt=6): 91 killer(ah) | victim(ah) | innocent(ah).  [clausify(22)].
+
+given #23 (I,wt=4): 95 -innocent(a) | -killer(a).  [clausify(26)].
+
+given #24 (I,wt=4): 96 -innocent(a) | -victim(a).  [clausify(26)].
+
+given #25 (I,wt=4): 97 -innocent(ah) | -killer(ah).  [clausify(27)].
+
+given #26 (I,wt=4): 98 -innocent(ah) | -victim(ah).  [clausify(27)].
+
+given #27 (I,wt=4): 99 -innocent(s) | -killer(s).  [clausify(28)].
+
+given #28 (I,wt=4): 100 -innocent(s) | -victim(s).  [clausify(28)].
+
+given #29 (I,wt=4): 101 -innocent(d) | -killer(d).  [clausify(29)].
+
+given #30 (I,wt=4): 102 -innocent(d) | -victim(d).  [clausify(29)].
+
+given #31 (I,wt=4): 103 -innocent(ab) | -killer(ab).  [clausify(30)].
+
+given #32 (I,wt=10): 105 -innocent(a) | killer(ah) | killer(s) | killer(d) | killer(ab).  [clausify(31)].
+
+given #33 (I,wt=10): 109 -innocent(ab) | killer(a) | killer(ah) | killer(s) | killer(d).  [clausify(35)].
+
+given #34 (I,wt=1): 122 b1.  [assumption].
+
+given #35 (I,wt=1): 127 b2.  [assumption].
+
+given #36 (I,wt=6): 128 -killer(s) | -victim(a) | innocent(ah).  [clausify(48)].
+
+given #37 (I,wt=6): 129 -killer(s) | -victim(a) | innocent(d).  [clausify(48)].
+
+given #38 (I,wt=6): 130 -killer(s) | -victim(a) | innocent(ab).  [clausify(48)].
+
+given #39 (I,wt=6): 131 -killer(s) | -victim(ah) | innocent(a).  [clausify(49)].
+
+given #40 (I,wt=6): 132 -killer(s) | -victim(ah) | innocent(d).  [clausify(49)].
+
+given #41 (I,wt=6): 133 -killer(s) | -victim(ah) | innocent(ab).  [clausify(49)].
+
+given #42 (I,wt=6): 137 -killer(d) | -victim(a) | innocent(ah).  [clausify(51)].
+
+given #43 (I,wt=6): 138 -killer(d) | -victim(a) | innocent(s).  [clausify(51)].
+
+given #44 (I,wt=6): 139 -killer(d) | -victim(a) | innocent(ab).  [clausify(51)].
+
+given #45 (I,wt=6): 140 -killer(d) | -victim(ah) | innocent(a).  [clausify(52)].
+
+given #46 (I,wt=6): 141 -killer(d) | -victim(ah) | innocent(s).  [clausify(52)].
+
+given #47 (I,wt=6): 142 -killer(d) | -victim(ah) | innocent(ab).  [clausify(52)].
+
+given #48 (I,wt=6): 146 -killer(a) | -victim(ah) | innocent(s).  [clausify(54)].
+
+given #49 (I,wt=6): 147 -killer(a) | -victim(ah) | innocent(d).  [clausify(54)].
+
+given #50 (I,wt=6): 148 -killer(a) | -victim(ah) | innocent(ab).  [clausify(54)].
+
+given #51 (I,wt=6): 155 -killer(ab) | -victim(ah) | innocent(a).  [clausify(57)].
+
+given #52 (I,wt=6): 156 -killer(ab) | -victim(ah) | innocent(s).  [clausify(57)].
+
+given #53 (I,wt=6): 157 -killer(ab) | -victim(ah) | innocent(d).  [clausify(57)].
+
+given #54 (I,wt=1): 161 b3.  [assumption].
+
+given #55 (I,wt=1): 164 b4.  [assumption].
+
+given #56 (I,wt=1): 181 b5.  [assumption].
+
+given #57 (I,wt=1): 183 b7.  [assumption].
+
+given #58 (I,wt=2): 184 -victim(ab).  [deny(62)].
+
+given #59 (I,wt=6): 185 innocent(ah) | innocent(s) | innocent(ab).  [back_unit_del(121),unit_del(a,122)].
+
+given #60 (I,wt=4): 186 innocent(a) | innocent(d).  [back_unit_del(120),unit_del(a,122)].
+
+given #61 (I,wt=4): 187 victim(a) | victim(ah).  [back_unit_del(126),unit_del(a,127),unit_del(d,184)].
+
+given #62 (I,wt=6): 188 killer(s) | killer(d) | victim(ah).  [back_unit_del(125),unit_del(a,127),unit_del(d,184)].
+
+given #63 (I,wt=8): 189 killer(s) | killer(d) | killer(a) | killer(ab).  [back_unit_del(124),unit_del(a,127),unit_del(d,184)].
+
+given #64 (I,wt=4): 190 killer(s) | innocent(s).  [back_unit_del(160),unit_del(a,161)].
+
+given #65 (I,wt=4): 191 innocent(d) | killer(d).  [back_unit_del(159),unit_del(a,161)].
+
+given #66 (I,wt=4): 192 innocent(d) | innocent(s).  [back_unit_del(158),unit_del(a,161)].
+
+given #67 (I,wt=4): 193 innocent(ah) | innocent(a).  [back_unit_del(163),unit_del(a,164)].
+
+given #68 (I,wt=6): 194 innocent(ab) | innocent(d) | victim(d).  [back_unit_del(180),unit_del(a,181),unit_del(c,184)].
+
+given #69 (I,wt=6): 195 innocent(ab) | victim(s) | victim(d).  [back_unit_del(178),unit_del(a,181),unit_del(c,184)].
+
+given #70 (I,wt=6): 196 innocent(ab) | victim(s) | innocent(s).  [back_unit_del(177),unit_del(a,181),unit_del(c,184)].
+
+given #71 (I,wt=6): 197 victim(a) | innocent(d) | victim(d).  [back_unit_del(172),unit_del(a,181),unit_del(c,184)].
+
+given #72 (I,wt=6): 198 victim(a) | victim(s) | victim(d).  [back_unit_del(170),unit_del(a,181),unit_del(c,184)].
+
+given #73 (I,wt=6): 199 victim(a) | victim(s) | innocent(s).  [back_unit_del(169),unit_del(a,181),unit_del(c,184)].
+
+given #74 (I,wt=6): 200 killer(a) | killer(ah) | killer(ab).  [back_unit_del(182),unit_del(a,183)].
+
+given #75 (I,wt=8): 201 -killer(a) | victim(ah) | victim(s) | victim(d).  [back_unit_del(115),unit_del(e,184)].
+
+given #76 (I,wt=8): 202 -innocent(a) | victim(ah) | victim(s) | victim(d).  [back_unit_del(110),unit_del(e,184)].
+
+given #77 (I,wt=4): 203 killer(ab) | innocent(ab).  [back_unit_del(94),unit_del(b,184)].
+
+given #78 (A,wt=6): 204 innocent(s) | innocent(ab) | -victim(ah).  [resolve(185,a,98,a)].
+
+given #79 (T,wt=4): 206 innocent(a) | -victim(d).  [resolve(186,b,102,a)].
+
+given #80 (T,wt=4): 207 innocent(a) | -killer(d).  [resolve(186,b,101,a)].
+
+given #81 (T,wt=4): 208 victim(a) | -victim(d).  [resolve(187,b,84,a)].
+
+given #82 (T,wt=4): 209 victim(a) | -victim(s).  [resolve(187,b,83,a)].
+
+given #83 (A,wt=6): 205 innocent(s) | innocent(ab) | -killer(ah).  [resolve(185,a,97,a)].
+
+given #84 (T,wt=4): 218 killer(s) | -victim(s).  [resolve(190,b,100,a)].
+
+given #85 (T,wt=4): 219 killer(d) | -victim(d).  [resolve(191,a,102,a)].
+
+given #86 (T,wt=4): 220 innocent(d) | -victim(s).  [resolve(192,b,100,a)].
+
+given #87 (T,wt=4): 221 innocent(d) | -killer(s).  [resolve(192,b,99,a)].
+
+given #88 (A,wt=8): 210 killer(d) | victim(ah) | -victim(a) | innocent(ab).  [resolve(188,a,130,a)].
+
+given #89 (T,wt=4): 222 innocent(a) | -victim(ah).  [resolve(193,a,98,a)].
+
+given #90 (T,wt=4): 223 innocent(a) | -killer(ah).  [resolve(193,a,97,a)].
+
+given #91 (T,wt=4): 234 victim(a) | victim(d).  [resolve(209,b,198,b),merge(b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.03 (+ 0.00) seconds.
+% Length of proof is 47.
+% Level of proof is 8.
+% Maximum clause weight is 9.000.
+% Given clauses 91.
+
+1 killer(a) -> -victim(a) & -killer(ah) & -killer(s) & -killer(d) & -killer(ab) # label(non_clause).  [assumption].
+11 victim(a) -> -killer(a) & -victim(ah) & -victim(s) & -victim(d) & -victim(ab) # label(non_clause).  [assumption].
+12 victim(ah) -> -victim(a) & -killer(ah) & -victim(s) & -victim(d) & -victim(ab) # label(non_clause).  [assumption].
+26 innocent(a) -> -killer(a) & -victim(a) # label(non_clause).  [assumption].
+27 innocent(ah) -> -killer(ah) & -victim(ah) # label(non_clause).  [assumption].
+30 innocent(ab) -> -killer(ab) & -victim(ab) # label(non_clause).  [assumption].
+47 b2 -> killer(s) & victim(a) | killer(s) & victim(ah) | killer(s) & victim(ab) | killer(d) & victim(a) | killer(d) & victim(ah) | killer(d) & victim(ab) | killer(a) & victim(ah) | killer(a) & victim(ab) | killer(ab) & victim(ah) | killer(ah) & victim(ab) # label(non_clause).  [assumption].
+59 b4 -> victim(a) & innocent(ah) | killer(a) & innocent(ah) | innocent(a) & victim(ah) | innocent(a) & killer(ah) # label(non_clause).  [assumption].
+60 b5 -> victim(a) & innocent(ab) | innocent(a) & victim(ab) | victim(s) & innocent(d) | innocent(s) & victim(d) # label(non_clause).  [assumption].
+61 b7 -> killer(a) | killer(ah) | killer(ab) # label(non_clause).  [assumption].
+62 victim(ab) # label(non_clause) # label(goal).  [goal].
+63 -killer(a) | -victim(a).  [clausify(1)].
+80 -victim(a) | -victim(s).  [clausify(11)].
+81 -victim(a) | -victim(d).  [clausify(11)].
+83 -victim(ah) | -victim(s).  [clausify(12)].
+84 -victim(ah) | -victim(d).  [clausify(12)].
+96 -innocent(a) | -victim(a).  [clausify(26)].
+97 -innocent(ah) | -killer(ah).  [clausify(27)].
+103 -innocent(ab) | -killer(ab).  [clausify(30)].
+126 -b2 | victim(a) | victim(ah) | victim(ab).  [clausify(47)].
+127 b2.  [assumption].
+163 -b4 | innocent(ah) | innocent(a).  [clausify(59)].
+164 b4.  [assumption].
+170 -b5 | victim(a) | victim(ab) | victim(s) | victim(d).  [clausify(60)].
+178 -b5 | innocent(ab) | victim(ab) | victim(s) | victim(d).  [clausify(60)].
+181 b5.  [assumption].
+182 -b7 | killer(a) | killer(ah) | killer(ab).  [clausify(61)].
+183 b7.  [assumption].
+184 -victim(ab).  [deny(62)].
+187 victim(a) | victim(ah).  [back_unit_del(126),unit_del(a,127),unit_del(d,184)].
+193 innocent(ah) | innocent(a).  [back_unit_del(163),unit_del(a,164)].
+195 innocent(ab) | victim(s) | victim(d).  [back_unit_del(178),unit_del(a,181),unit_del(c,184)].
+198 victim(a) | victim(s) | victim(d).  [back_unit_del(170),unit_del(a,181),unit_del(c,184)].
+200 killer(a) | killer(ah) | killer(ab).  [back_unit_del(182),unit_del(a,183)].
+208 victim(a) | -victim(d).  [resolve(187,b,84,a)].
+209 victim(a) | -victim(s).  [resolve(187,b,83,a)].
+223 innocent(a) | -killer(ah).  [resolve(193,a,97,a)].
+226 victim(s) | victim(d) | -killer(ab).  [resolve(195,a,103,a)].
+234 victim(a) | victim(d).  [resolve(209,b,198,b),merge(b)].
+236 innocent(a) | killer(a) | killer(ab).  [resolve(223,b,200,b)].
+238 victim(a).  [resolve(234,b,208,b),merge(b)].
+247 -innocent(a).  [back_unit_del(96),unit_del(b,238)].
+248 -victim(d).  [back_unit_del(81),unit_del(a,238)].
+249 -victim(s).  [back_unit_del(80),unit_del(a,238)].
+251 -killer(a).  [back_unit_del(63),unit_del(b,238)].
+252 killer(ab).  [back_unit_del(236),unit_del(a,247),unit_del(b,251)].
+257 $F.  [back_unit_del(226),unit_del(a,249),unit_del(b,248),unit_del(c,252)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=91. Generated=288. Kept=194. proofs=1.
+Usable=50. Sos=18. Demods=0. Limbo=9, Disabled=275. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=93. Back_subsumed=58.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=59.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=77. Nonunit_bsub_feature_tests=251.
+Megabytes=0.40.
+User_CPU=0.03, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 3320 exit (max_proofs) Mon Dec  2 16:57:52 2024

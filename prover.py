@@ -130,6 +130,43 @@ def get_theorem_content(theorem_number, goal):
     
     elif theorem_number == 3:
         return assumptions
+
+    elif theorem_number == 4:
+        if goal == 1:
+            goal_content = 'formulas(goals).\n killer(joplin).\n end_of_list.\n'
+        elif goal == 2:
+            goal_content = 'formulas(goals).\n killer(grieg).\n end_of_list.\n'
+        elif goal == 3:
+            goal_content = 'formulas(goals).\n killer(strauss).\n end_of_list.\n'
+        elif goal == 4:
+            goal_content = 'formulas(goals).\n killer(gershwin).\n end_of_list.\n'
+        else:
+            raise ValueError("Invalid goal value for theorem 4")
+        
+    elif theorem_number == 5:
+        if goal == 1:
+            goal_content = 'formulas(goals).\n M_A.\n end_of_list.\n'
+        elif goal == 2:
+            goal_content = 'formulas(goals).\n M_C.\n end_of_list.\n'
+        elif goal == 3:
+            goal_content = 'formulas(goals).\n M_B.\n end_of_list.\n'
+        else:
+            raise ValueError("Invalid goal value for theorem 5")
+        
+    elif theorem_number == 6:
+        if goal == 1:
+            goal_content = 'formulas(goals).\n victim(a).\n end_of_list.\n'
+        elif goal == 2:
+            goal_content = 'formulas(goals).\n victim(ah).\n end_of_list.\n'
+        elif goal == 3:
+            goal_content = 'formulas(goals).\n victim(s).\n end_of_list.\n' 
+        elif goal == 4:
+            goal_content = 'formulas(goals).\n victim(d).\n end_of_list.\n'
+        elif goal == 5:
+            goal_content = 'formulas(goals).\n victim(ab).\n end_of_list.\n' 
+        else:
+            raise ValueError("Invalid goal value for theorem 6")
+
     else:
         raise ValueError(f"Theorem {theorem_number} not implemented")
 

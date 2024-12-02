@@ -1,0 +1,29 @@
+formulas(assumptions).
+
+    % Joplin's statements
+    % "I did not kill Handel."
+    % "Either Grieg is the killer or none of us is."
+    - killer(joplin) -> -(killer(grieg) | (-killer(joplin) & -killer(grieg) & -killer(strauss) & -killer(gershwin))).
+
+    % Grieg's statements
+    % "I did not kill Handel."
+    % "Gershwin is the killer."
+    - killer(grieg) -> killer(gershwin).
+
+    % Strauss's statements
+    % "I did not kill Handel." 
+    % "Grieg is lying when he says Gershwin is the killer."
+    - killer(strauss) -> -(- killer(grieg) -> killer(gershwin)).
+
+    % Gershwin's statements
+    % "I did not kill Handel." 
+    % "If Joplin did not kill him, then Grieg did."
+    - killer(gershwin) -> (killer(joplin) | killer(grieg)).
+
+    % One of the suspects must be the killer
+    killer(joplin) | killer(grieg) | killer(strauss) | killer(gershwin).
+
+    % Only one killer is possible
+    - (killer(joplin) & killer(grieg) & killer(strauss) & killer(gershwin)).
+
+end_of_list.

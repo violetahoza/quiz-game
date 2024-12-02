@@ -1,0 +1,106 @@
+formulas(assumptions).
+
+    % Roles: a (Alice), ah (Alice's husband), d (Alice's daughter), s (Alice's son), ab (Alice's brother)
+
+    % a single killer
+    killer(a) -> -victim(a) & -killer(ah) & -killer(s) & -killer(d) & -killer(ab).
+    killer(ah) -> -killer(a) & -victim(ah) & -killer(s) & -killer(d) & -killer(ab).
+    killer(s) -> -killer(a) & -killer(ah) & -victim(s) & -killer(d) & -killer(ab).
+    killer(d) -> -killer(a) & -killer(ah) & -killer(s) & -victim(d) & -killer(ab).
+    killer(ab) -> -killer(a) & -killer(ah) & -killer(s) & -killer(d) & -victim(ab).
+
+    -killer(a) -> killer(ah) | killer(s) | killer(d) | killer(ab).
+    -killer(ah) -> killer(a) | killer(s) | killer(d) | killer(ab).
+    -killer(s) -> killer(a) | killer(ah) | killer(d) | killer(ab).
+    -killer(d) -> killer(a) | killer(ah) | killer(s) | killer(ab).
+    -killer(ab) -> killer(a) | killer(ah) | killer(s) | killer(d).
+
+    % only one person can be the victim
+    victim(a) -> -killer(a) & -victim(ah) & -victim(s) & -victim(d) & -victim(ab).
+    victim(ah) -> -victim(a) & -killer(ah) & -victim(s) & -victim(d) & -victim(ab).
+    victim(s) -> -victim(a) & -victim(ah) & -killer(s) & -victim(d) & -victim(ab).
+    victim(d) -> -victim(a) & -victim(ah) & -victim(s) & -killer(d) & -victim(ab).
+    victim(ab) -> -victim(a) & -victim(ah) & -victim(s) & -victim(d) & -killer(ab).
+
+    -victim(a) -> victim(ah) | victim(s) | victim(d) | victim(ab).
+    -victim(ah) -> victim(a) | victim(s) | victim(d) | victim(ab).
+    -victim(s) -> victim(a) | victim(ah) | victim(d) | victim(ab).
+    -victim(d) -> victim(a) | victim(ah) | victim(s) | victim(ab).
+    -victim(ab) -> victim(a) | victim(ah) | victim(s) | victim(d).
+
+    % if a person is not the killer and not a victim, that person is innocent
+    -killer(a) & -victim(a) -> innocent(a).
+    -killer(ah) & -victim(ah) -> innocent(ah).
+    -killer(s) & -victim(s) -> innocent(s).
+    -killer(d) & -victim(d) -> innocent(d).
+    -killer(ab) & -victim(ab) -> innocent(ab).
+
+    innocent(a) -> -killer(a) & -victim(a).
+    innocent(ah) -> -killer(ah) & -victim(ah).
+    innocent(s) -> -killer(s) & -victim(s).
+    innocent(d) -> -killer(d) & -victim(d).
+    innocent(ab) -> -killer(ab) & -victim(ab).
+
+    innocent(a) -> killer(ah) | killer(s) | killer(d) | killer(ab).
+    innocent(ah) -> killer(a) | killer(s) | killer(d) | killer(ab).
+    innocent(s) -> killer(a) | killer(ah) | killer(d) | killer(ab).
+    innocent(d) -> killer(a) | killer(ah) | killer(s) | killer(ab).
+    innocent(ab) -> killer(a) | killer(ah) | killer(s) | killer(d).
+
+    innocent(a) -> victim(ah) | victim(s) | victim(d) | victim(ab).
+    innocent(ah) -> victim(a) | victim(s) | victim(d) | victim(ab).
+    innocent(s) -> victim(a) | victim(ah) | victim(d) | victim(ab).
+    innocent(d) -> victim(a) | victim(ah) | victim(s) | victim(ab).
+    innocent(ab) -> victim(a) | victim(ah) | victim(s) | victim(d).
+
+    killer(a) -> victim(ah) | victim(s) | victim(d) | victim(ab).
+    killer(ah) -> victim(a) | victim(s) | victim(d) | victim(ab).
+    killer(s) -> victim(a) | victim(ah) | victim(d) | victim(ab).
+    killer(d) -> victim(a) | victim(ah) | victim(s) | victim(ab).
+    killer(ab) -> victim(a) | victim(ah) | victim(s) | victim(d).
+
+    % A man and a woman were together in a bar at the time of the murder.
+    b1 -> (innocent(a) & innocent(ah)) | (innocent(a) & innocent(s)) | (innocent(a) & innocent(ab)) | 
+        (innocent(d) & innocent(ah)) | (innocent(d) & innocent(s)) | (innocent(d) & innocent(ab)).
+    b1.
+
+    % The victim and the killer were together on a beach at the time of the murder.
+    % The killer was younger than the victim.
+    b2 -> (killer(s) & victim(a)) | (killer(s) & victim(ah)) | (killer(s) & victim(ab)) | 
+        (killer(d) & victim(a)) | (killer(d) & victim(ah)) | (killer(d) & victim(ab)) | 
+        (killer(a) & victim(ah)) | (killer(a) & victim(ab)) | 
+        (killer(ab) & victim(ah)) | (killer(ah) & victim(ab)).
+    b2.
+
+    (killer(s) & victim(a)) -> innocent(ah) & innocent(d) & innocent(ab).
+    (killer(s) & victim(ah)) -> innocent(a) & innocent(d) & innocent(ab).
+    (killer(s) & victim(ab)) -> innocent(a) & innocent(ah) & innocent(d).
+
+    (killer(d) & victim(a)) -> innocent(ah) & innocent(s) & innocent(ab).
+    (killer(d) & victim(ah)) -> innocent(a) & innocent(s) & innocent(ab).
+    (killer(d) & victim(ab)) -> innocent(a) & innocent(ah) & innocent(s).
+
+    (killer(a) & victim(ah)) -> innocent(s) & innocent(d) & innocent(ab).
+    (killer(a) & victim(ab)) -> innocent(ab) & innocent(s) & innocent(d).
+
+    (killer(ah) & victim(ab)) -> innocent(a) & innocent(s) & innocent(d).
+
+    (killer(ab) & victim(ah)) -> innocent(a) & innocent(s) & innocent(d).
+
+    % One of Alice’s two children was alone at the time of the murder.
+    b3 -> (innocent(d) & killer(s)) | (innocent(s) & killer(d)) | (innocent(s) & innocent(d)).
+    b3.
+
+    % Alice and her husband were not together at the time of the murder.
+    b4 -> (victim(a) & innocent(ah)) | (killer(a) & innocent(ah)) | (innocent(a) & victim(ah)) | (innocent(a) & killer(ah)).
+    b4.
+
+    % The victim’s twin was not the killer.
+    b5 -> (victim(a) & innocent(ab)) | (innocent(a) & victim(ab)) | (victim(s) & innocent(d)) | (innocent(s) & victim(d)).
+    b5.
+
+     % b7 condition
+    b7 -> killer(a) | killer(ah) | killer(ab).
+    b7.
+
+end_of_list.

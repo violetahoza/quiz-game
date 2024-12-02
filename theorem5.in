@@ -1,0 +1,49 @@
+formulas(assumptions).
+
+    % 1. Constraints between Audrey and Brenda
+    % Either both have blue eyes or neither has blue eyes
+    A_b <-> B_b.
+    % Exactly one has red hair
+    A_r | B_r.
+    -(A_r & B_r).
+    A_r -> -B_r.
+    B_r -> -A_r.
+
+    % 2. Constraints between Audrey and Charlotte
+    % Either both have red hair or neither has red hair
+    A_r <-> C_r.  
+    % Exactly one is 5'11"
+    A_h | C_h.
+    -(A_h & C_h).
+    A_h -> -C_h.
+    C_h -> -A_h.
+
+    % 3. Constraints between Brenda and Charlotte
+    % Exactly one has blue eyes
+    B_b | C_b.
+    -(B_b & C_b).
+    B_b -> -C_b.
+    C_b -> -B_b.
+    % Exactly one is 5'11"
+    B_h | C_h.
+    -(B_h & C_h).
+    B_h -> -C_h.
+    C_h -> -B_h.
+
+    (A_b & -A_r & -A_h) | (-A_b & A_r & -A_h) | (-A_b & -A_r & A_h) -> A_one.
+    (B_b & -B_r & -B_h) | (-B_b & B_r & -B_h) | (-B_b & -B_r & B_h) -> B_one.
+    (C_b & -C_r & -C_h) | (-C_b & C_r & -C_h) | (-C_b & -C_r & C_h) -> C_one.
+
+    (A_b & A_r & -A_h) | (A_b & -A_r & A_h) | (-A_b & A_r & A_h) -> A_two.
+    (B_b & B_r & -B_h) | (B_b & -B_r & B_h) | (-B_b & B_r & B_h) -> B_two.
+    (C_b & C_r & -C_h) | (C_b & -C_r & C_h) | (-C_b & C_r & C_h) -> C_two.
+
+    (A_one & -B_one & -C_one) | (A_two & -B_two & -C_two) <-> M_A.
+    (B_one & - A_one & -C_one) | (B_two & -A_two & -C_two) <-> M_B.
+    (C_one & - A_one & -B_one) | (C_two & -A_two & -B_two) <-> M_C.
+
+    % Only one woman gets married
+    -(M_A & M_B & M_C).  % Only one can get married
+    M_A | M_B | M_C.  % At least one woman gets married
+
+end_of_list.

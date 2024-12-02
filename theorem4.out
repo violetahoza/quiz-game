@@ -1,0 +1,134 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 3369 was started by violeta on LAPTOP-J1T1GSAL,
+Mon Dec  2 17:04:29 2024
+The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+-killer(joplin) -> -(killer(grieg) | -killer(joplin) & -killer(grieg) & -killer(strauss) & -killer(gershwin)).
+-killer(grieg) -> killer(gershwin).
+-killer(strauss) -> -(-killer(grieg) -> killer(gershwin)).
+-killer(gershwin) -> killer(joplin) | killer(grieg).
+killer(joplin) | killer(grieg) | killer(strauss) | killer(gershwin).
+-(killer(joplin) & killer(grieg) & killer(strauss) & killer(gershwin)).
+end_of_list.
+
+formulas(goals).
+killer(strauss).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 -killer(joplin) -> -(killer(grieg) | -killer(joplin) & -killer(grieg) & -killer(strauss) & -killer(gershwin)) # label(non_clause).  [assumption].
+2 -killer(grieg) -> killer(gershwin) # label(non_clause).  [assumption].
+3 -killer(strauss) -> -(-killer(grieg) -> killer(gershwin)) # label(non_clause).  [assumption].
+4 -killer(gershwin) -> killer(joplin) | killer(grieg) # label(non_clause).  [assumption].
+5 -(killer(joplin) & killer(grieg) & killer(strauss) & killer(gershwin)) # label(non_clause).  [assumption].
+6 killer(strauss) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+killer(joplin) | -killer(grieg).  [clausify(1)].
+killer(joplin) | killer(grieg) | killer(strauss) | killer(gershwin).  [clausify(1)].
+killer(grieg) | killer(gershwin).  [clausify(2)].
+killer(strauss) | -killer(grieg).  [clausify(3)].
+killer(strauss) | -killer(gershwin).  [clausify(3)].
+killer(gershwin) | killer(joplin) | killer(grieg).  [clausify(4)].
+killer(joplin) | killer(grieg) | killer(strauss) | killer(gershwin).  [assumption].
+-killer(joplin) | -killer(grieg) | -killer(strauss) | -killer(gershwin).  [clausify(5)].
+-killer(strauss).  [deny(6)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ killer ]).
+Function symbol precedence:  function_order([ grieg, gershwin, joplin, strauss ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      7 killer(joplin) | -killer(grieg).  [clausify(1)].
+kept:      8 killer(joplin) | killer(grieg) | killer(strauss) | killer(gershwin).  [clausify(1)].
+kept:      9 killer(grieg) | killer(gershwin).  [clausify(2)].
+kept:      10 killer(strauss) | -killer(grieg).  [clausify(3)].
+kept:      11 killer(strauss) | -killer(gershwin).  [clausify(3)].
+kept:      12 -killer(joplin) | -killer(grieg) | -killer(strauss) | -killer(gershwin).  [clausify(5)].
+kept:      13 -killer(strauss).  [deny(6)].
+kept:      14 -killer(gershwin).  [back_unit_del(11),unit_del(a,13)].
+kept:      15 -killer(grieg).  [back_unit_del(10),unit_del(a,13)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.01) seconds.
+% Length of proof is 10.
+% Level of proof is 3.
+% Maximum clause weight is 4.000.
+% Given clauses 0.
+
+2 -killer(grieg) -> killer(gershwin) # label(non_clause).  [assumption].
+3 -killer(strauss) -> -(-killer(grieg) -> killer(gershwin)) # label(non_clause).  [assumption].
+6 killer(strauss) # label(non_clause) # label(goal).  [goal].
+9 killer(grieg) | killer(gershwin).  [clausify(2)].
+10 killer(strauss) | -killer(grieg).  [clausify(3)].
+11 killer(strauss) | -killer(gershwin).  [clausify(3)].
+13 -killer(strauss).  [deny(6)].
+14 -killer(gershwin).  [back_unit_del(11),unit_del(a,13)].
+15 -killer(grieg).  [back_unit_del(10),unit_del(a,13)].
+16 $F.  [back_unit_del(9),unit_del(a,15),unit_del(b,14)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=12. Kept=9. proofs=1.
+Usable=0. Sos=2. Demods=0. Limbo=2, Disabled=14. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=3.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=2. Nonunit_bsub_feature_tests=8.
+Megabytes=0.04.
+User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 3369 exit (max_proofs) Mon Dec  2 17:04:29 2024
