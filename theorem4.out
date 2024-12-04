@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 3369 was started by violeta on LAPTOP-J1T1GSAL,
-Mon Dec  2 17:04:29 2024
+Process 755 was started by violeta on LAPTOP-J1T1GSAL,
+Wed Dec  4 19:23:04 2024
 The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
 ============================== end of head ===========================
 
@@ -90,7 +90,7 @@ kept:      15 -killer(grieg).  [back_unit_del(10),unit_del(a,13)].
 
 ============================== PROOF =================================
 
-% Proof 1 at 0.00 (+ 0.01) seconds.
+% Proof 1 at 0.01 (+ 0.00) seconds.
 % Length of proof is 10.
 % Level of proof is 3.
 % Maximum clause weight is 4.000.
@@ -121,7 +121,7 @@ Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
 Nonunit_fsub_feature_tests=2. Nonunit_bsub_feature_tests=8.
 Megabytes=0.04.
-User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
@@ -131,4 +131,4 @@ THEOREM PROVED
 
 Exiting with 1 proof.
 
-Process 3369 exit (max_proofs) Mon Dec  2 17:04:29 2024
+Process 755 exit (max_proofs) Wed Dec  4 19:23:04 2024

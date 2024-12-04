@@ -145,10 +145,10 @@ def questionPage(question_index):
     title = tk.Label(gui, text=f"Question {question_index + 1}: {questions[question_index][0]}", font=('Helvetica bold', 24), fg="#6f2bae", bg="#c3b5df")
     title.pack(pady=20)
 
-    descriptionFrame = tk.Frame(gui, bg="#e7dfee")
+    descriptionFrame = tk.Frame(gui, bg="#c3b5df")
     descriptionFrame.pack(pady=(10, 20), padx=10)
 
-    questionDescription = tk.Text(descriptionFrame, wrap=tk.WORD, height=12, width=80, bg="#f0f0f0", fg="#40031e", font=('Helvetica', 12))
+    questionDescription = tk.Text(descriptionFrame, wrap=tk.WORD, height=12, width=80, bg="#c3b5df", fg="#3f1269", font=('Helvetica', 12))
     questionDescription.insert(tk.END, questions[question_index][1])
     questionDescription.config(state=tk.DISABLED)
     questionDescription.pack()

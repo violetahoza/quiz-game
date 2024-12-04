@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 3320 was started by violeta on LAPTOP-J1T1GSAL,
-Mon Dec  2 16:57:52 2024
+Process 759 was started by violeta on LAPTOP-J1T1GSAL,
+Wed Dec  4 19:23:12 2024
 The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/prover9".
 ============================== end of head ===========================
 
@@ -767,7 +767,7 @@ given #91 (T,wt=4): 234 victim(a) | victim(d).  [resolve(209,b,198,b),merge(b)].
 
 ============================== PROOF =================================
 
-% Proof 1 at 0.03 (+ 0.00) seconds.
+% Proof 1 at 0.03 (+ 0.01) seconds.
 % Length of proof is 47.
 % Level of proof is 8.
 % Maximum clause weight is 9.000.
@@ -835,7 +835,7 @@ Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
 Nonunit_fsub_feature_tests=77. Nonunit_bsub_feature_tests=251.
 Megabytes=0.40.
-User_CPU=0.03, System_CPU=0.00, Wall_clock=0.
+User_CPU=0.03, System_CPU=0.01, Wall_clock=1.
 
 ============================== end of statistics =====================
 
@@ -845,4 +845,4 @@ THEOREM PROVED
 
 Exiting with 1 proof.
 
-Process 3320 exit (max_proofs) Mon Dec  2 16:57:52 2024
+Process 759 exit (max_proofs) Wed Dec  4 19:23:13 2024

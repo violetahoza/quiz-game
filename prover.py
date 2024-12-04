@@ -46,61 +46,41 @@ def run_prover9(i, j):
 
 # Dynamically generates input files for Mace4 with a single goal and runs it.
 def run_mace4(i, j):
-
-    file_in = f'theorem{i}_temp.in'  # Temporary file to avoid modifying the base file
+    file_in = f'theorem{i}_temp.in'
     file_out = f'theorem{i}.out'
 
-    # Generate content based on the selected question and goal
     input_file_content = get_theorem_content(i, j)
 
-    # Write the input file
     with open(file_in, 'w') as f:
         f.write(input_file_content)
 
-    mace4_command = [MACE4_PATH, '-f', file_in] 
-
-    print(f"Running Mace4 with command: {' '.join(mace4_command)}")
+    mace4_command = [MACE4_PATH, '-f', file_in]
 
     try:
-        # Open the output file to capture the result
+        result = subprocess.run(
+            mace4_command, 
+            capture_output=True,  # Capture both stdout and stderr
+            text=True,
+            timeout=60
+        )
+
+        # Write output to file
         with open(file_out, 'w') as output_file:
-            result = subprocess.run(
-                mace4_command,
-                stdout=output_file,
-                stderr=subprocess.PIPE,  
-                text=True,
-                timeout=60  # Timeout after 60 seconds
-            )
+            output_file.write(result.stdout)
 
-            if result.stderr:
-                print(f"Mace4 generated error output: {result.stderr}")
+        # Print full output for debugging
+        print("Mace4 Output:", result.stdout)
+        print("Mace4 Error:", result.stderr)
 
-            # Check for non-zero exit code indicating failure
-            if result.returncode != 0:
-                print(f"Mace4 failed with return code {result.returncode}")
-
-            return result.returncode == 0  # Return True if Mace4 was successful
+        # Check return code
+        #return result.returncode == 0
 
     except subprocess.TimeoutExpired:
-        print(f"Mace4 timed out after 60 seconds for theorem {i}")
-        return False
-    except subprocess.CalledProcessError as e:
-        print(f"Error executing Mace4 for theorem {i}: {e}")
-        if e.stderr:
-            print(f"Error Output: {e.stderr}")
-        return False
-    except IOError as e:
-        print(f"File I/O error for theorem {i}: {e}")
+        print(f"Mace4 timed out for theorem {i}")
         return False
     except Exception as e:
-        print(f"Unexpected error for theorem {i}: {e}")
+        print(f"Error executing Mace4: {e}")
         return False
-    finally:
-        # Clean up temporary input file
-        try:
-            os.remove(file_in)
-        except FileNotFoundError:
-            pass
 
     # After the process finishes, verify the selected answer
     return verify_selected_answer(file_out, j)

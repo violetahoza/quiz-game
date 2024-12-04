@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 3367 was started by violeta on LAPTOP-J1T1GSAL,
-Mon Dec  2 17:04:25 2024
+Process 1011 was started by violeta on LAPTOP-J1T1GSAL,
+Wed Dec  4 19:34:06 2024
 The command was "/mnt/c/Users/hozas/OneDrive/De toate/facultate/AI/labs/LADR-2009-11A/bin/mace4 -f theorem3_temp.in".
 ============================== end of head ===========================
 
@@ -257,5 +257,5 @@ User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 3367 exit (all_models) Mon Dec  2 17:04:25 2024
-The process finished Mon Dec  2 17:04:25 2024
+Process 1011 exit (all_models) Wed Dec  4 19:34:06 2024
+The process finished Wed Dec  4 19:34:06 2024
